@@ -10,6 +10,7 @@ class ChapterEntity extends BaseEntity {
 	protected $title;
 	protected $parent_id;
 	protected $parent;
+	protected $articles;
 
 	public function fieldType() {
 		return [

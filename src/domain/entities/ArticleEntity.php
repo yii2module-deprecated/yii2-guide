@@ -9,6 +9,15 @@ class ArticleEntity extends BaseEntity {
 	
 	protected $id;
 	protected $md;
+	protected $chapter;
+
+	public function fieldType() {
+		return [
+			'chapter' => [
+				'type' => ChapterEntity::className(),
+			],
+		];
+	}
 
 	public function getHtml() {
 		$markdown = new MarkdownExtra();

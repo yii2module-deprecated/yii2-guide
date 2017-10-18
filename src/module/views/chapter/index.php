@@ -2,21 +2,16 @@
 
 /* @var $this yii\web\View */
 
-use yii\helpers\Html;
-use yii2module\guide\module\Module;
+use yii\widgets\Menu;
+use yii2module\guide\domain\helpers\ArticleHelper;
 
 $this->title = $entity->title;
-
 ?>
 
 <h1>
 	<?= $entity->title ?>
 </h1>
 
-<ul>
-	<?php foreach($collection as $item) { ?>
-		<li>
-			<?= Html::a($item->title, [Module::URL_ARTICLE_VIEW, 'id' => $item->id]) ?>
-		</li>
-	<?php } ?>
-</ul>
+<?= Menu::widget([
+	'items' => ArticleHelper::collectionToItems($entity->articles)
+]) ?>
