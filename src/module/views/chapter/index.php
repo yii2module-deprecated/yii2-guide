@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use yii2module\guide\module\Module;
 
 $this->title = $entity->title;
 
@@ -15,7 +16,7 @@ $this->title = $entity->title;
 <ul>
 	<?php foreach($collection as $item) { ?>
 		<li>
-			<?= Html::a($item->title, ['/guide/default/view', 'id' => $item->id]) ?>
+			<?= Html::a($item->title, [Module::URL_ARTICLE_VIEW, 'id' => $item->id]) ?>
 		</li>
 	<?php } ?>
 </ul>
