@@ -23,11 +23,13 @@ class ChapterHelper {
 	private static function mapToFlat($chapters) {
 		$result = [];
 		foreach($chapters as $chapter) {
-			foreach($chapter['items'] as $item) {
-				$item['parent_id'] = $chapter['id'];
-				$result[] = $item;
+			if(!empty($chapter['items'])) {
+				foreach($chapter['items'] as $item) {
+					$item['parent_id'] = $chapter['id'];
+					$result[] = $item;
+				}
+				unset($chapter['items']);
 			}
-			unset($chapter['items']);
 			$result[] = $chapter;
 		}
 		return $result;
