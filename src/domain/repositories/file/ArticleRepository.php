@@ -31,4 +31,10 @@ class ArticleRepository extends BaseRepository {
 		]);
 	}
 
+	public function oneByIdWithChapter($id) {
+		$entity = $this->oneById($id);
+		$entity->chapter = $this->domain->repositories->chapter->oneByArticleId($id);
+		return $entity;
+	}
+
 }

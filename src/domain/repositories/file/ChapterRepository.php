@@ -14,6 +14,12 @@ class ChapterRepository extends BaseRepository {
 
 	public $primaryKey = 'id';
 
+	public function oneByIdWithArticles($id) {
+		$entity = $this->oneById($id);
+		$entity->articles = $this->allByParentId($id);
+		return $entity;
+	}
+
 	public function oneByArticleId($id) {
 		$entity = $this->oneById($id);
 		$entity->parent = $this->oneById($entity->parent_id);

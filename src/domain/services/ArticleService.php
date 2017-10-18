@@ -12,9 +12,7 @@ class ArticleService extends ActiveBaseService {
 	}
 
 	public function oneByIdWithChapter($id) {
-		$entity = $this->repository->oneById($id);
-		$entity->chapter = Yii::$app->guide->chapter->oneByArticleId($id);
-		return $entity;
+		return $this->repository->oneByIdWithChapter($id);
 	}
 
 }
