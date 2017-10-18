@@ -18,7 +18,7 @@ class DefaultController extends Controller {
 		if($id) {
 			$breadcrumbs = Yii::$app->navigation->breadcrumbs;
 			$breadcrumbs->create($entity->chapter->parent->title, [Module::URL_CHAPTER_VIEW, 'id' => $entity->chapter->parent->id]);
-			$breadcrumbs->create($entity->title, [Module::URL_ARTICLE_VIEW, 'id' => $entity->id]);
+			$breadcrumbs->create($entity->title/*, [Module::URL_ARTICLE_VIEW, 'id' => $entity->id]*/);
 		}
 		return $this->render('index', compact('entity'));
 	}
