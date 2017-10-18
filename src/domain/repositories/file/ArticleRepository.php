@@ -14,12 +14,11 @@ class ArticleRepository extends BaseRepository {
 	public $main;
 
 	public function oneMain() {
-		return $this->oneById(null);
+		return $this->oneById($this->main);
 	}
 
 	public function oneById($id, Query $query = null) {
 		/** @var Query $query */
-		$id = $id ? $id : $this->main;
 		$content = FileHelper::load(Yii::getAlias("@{$this->dir}/{$id}.md"));
 		//$query = $this->forgeQuery($query);
 		if(empty($content)) {
