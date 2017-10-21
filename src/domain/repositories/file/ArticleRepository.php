@@ -13,6 +13,17 @@ class ArticleRepository extends BaseRepository {
 	public $dir;
 	public $main;
 
+	public function oneByDir($dir, $id = 'README') {
+		$content = FileHelper::load(Yii::getAlias("@{$dir}/{$id}.md"));
+		if(empty($content)) {
+			throw new NotFoundHttpException();
+		}
+		return $this->forgeEntity([
+			'id' => $id,
+			'md' => $content,
+		]);
+	}
+
 	public function setProject($project_id) {
 		$project = Yii::$app->guide->project->oneById($project_id);
 		$this->dir = $project->dir;
