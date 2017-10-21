@@ -4,6 +4,7 @@ namespace yii2module\guide\module;
 
 use Yii;
 use yii\base\Module as YiiModule;
+use yii2module\guide\domain\helpers\NavigationHelper;
 
 class Module extends YiiModule
 {
@@ -15,6 +16,14 @@ class Module extends YiiModule
 
 	public function init() {
 		parent::init();
-		Yii::$app->navigation->breadcrumbs->create(['guide/main', 'title'], [self::URL_MODULE]);
+		NavigationHelper::root();
+		$this->initProject();
+	}
+
+	private function initProject() {
+		$project_id = Yii::$app->request->getQueryParam('project_id');
+		if($project_id) {
+			Yii::$app->guide->article->setProject($project_id);
+		}
 	}
 }

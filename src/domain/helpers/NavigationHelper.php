@@ -8,7 +8,11 @@ use yii2mod\helpers\ArrayHelper;
 use yii2module\guide\module\Module;
 
 class NavigationHelper {
-	
+
+	public static function root() {
+		Yii::$app->navigation->breadcrumbs->create(['guide/main', 'title'], [Module::URL_MODULE]);
+	}
+
 	public static function project($id) {
 		$project = static::getEntity($id, 'doc');
 		Yii::$app->navigation->breadcrumbs->create($project->title, [Module::URL_ARTICLE_INDEX, 'project_id' => $project->id]);
