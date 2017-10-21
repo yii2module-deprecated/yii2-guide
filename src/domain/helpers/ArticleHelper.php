@@ -35,7 +35,7 @@ class ArticleHelper {
 	public static function genUrl($baseUrl, $params = []) {
 		$url = [];
 		$url[] = $baseUrl;
-		$url['project'] = Yii::$app->request->getQueryParam('project');
+		$url['project_id'] = Yii::$app->request->getQueryParam('project_id');
 		if(!empty($params)) {
 			foreach($params as $key => $value) {
 				$url[$key] = $value;

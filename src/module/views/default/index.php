@@ -10,5 +10,5 @@ use yii2module\guide\module\Module;
 ?>
 
 <?= Menu::widget([
-	'items' => ArticleHelper::collectionToItems($collection, Module::URL_ARTICLE_INDEX, ['project', 'id'])
+	'items' => ArticleHelper::collectionToItems($collection, Module::URL_ARTICLE_INDEX, ['project_id', 'id'])
 ]) ?>
