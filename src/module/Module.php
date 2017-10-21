@@ -14,10 +14,13 @@ class Module extends YiiModule
 	const URL_ARTICLE_INDEX = '/guide/article';
 	const URL_CHAPTER_VIEW = '/guide/chapter/view';
 
+	public $navigation;
+
 	public function init() {
 		parent::init();
+		$this->navigation = Yii::createObject(NavigationHelper::class);
+		$this->navigation->root();
 		Yii::$app->navigation->breadcrumbs->removeLastUrl();
-		NavigationHelper::root();
 		$this->initProject();
 	}
 

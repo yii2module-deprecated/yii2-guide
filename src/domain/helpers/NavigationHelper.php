@@ -9,26 +9,30 @@ use yii2module\guide\module\Module;
 
 class NavigationHelper {
 
-	public static function root() {
-		Yii::$app->navigation->breadcrumbs->create(['guide/main', 'title'], [Module::URL_MODULE]);
+	public function root() {
+		$url = [Module::URL_MODULE];
+		Yii::$app->navigation->breadcrumbs->create(['guide/main', 'title'], $url);
 	}
 
-	public static function project($id) {
-		$project = static::getEntity($id, 'project');
-		Yii::$app->navigation->breadcrumbs->create($project->title, [Module::URL_ARTICLE_INDEX, 'project_id' => $project->id]);
+	public function project($id) {
+		$project =$this->getEntity($id, 'project');
+		$url = [Module::URL_ARTICLE_INDEX, 'project_id' => $project->id];
+		Yii::$app->navigation->breadcrumbs->create($project->title, $url);
 	}
 
-	public static function article($id) {
-		$article = static::getEntity($id, 'article');
-		Yii::$app->navigation->breadcrumbs->create($article->title, ArticleHelper::genUrl(Module::URL_ARTICLE_VIEW, ['id' => $article->id]));
+	public function article($id) {
+		$article =$this->getEntity($id, 'article');
+		$url = ArticleHelper::genUrl(Module::URL_ARTICLE_VIEW, ['id' => $article->id]);
+		Yii::$app->navigation->breadcrumbs->create($article->title, $url);
 	}
 
-	public static function chapter($id) {
-		$chapter = static::getEntity($id, 'chapter');
-		Yii::$app->navigation->breadcrumbs->create($chapter->title, ArticleHelper::genUrl(Module::URL_CHAPTER_VIEW, ['id' => $chapter->id]));
+	public function chapter($id) {
+		$chapter =$this->getEntity($id, 'chapter');
+		$url = ArticleHelper::genUrl(Module::URL_CHAPTER_VIEW, ['id' => $chapter->id]);
+		Yii::$app->navigation->breadcrumbs->create($chapter->title, $url);
 	}
 
-	private static function getEntity($id, $serviceName) {
+	private function getEntity($id, $serviceName) {
 		if($id instanceof BaseEntity) {
 			$entity = $id;
 		} else {
