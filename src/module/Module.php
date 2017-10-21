@@ -16,6 +16,7 @@ class Module extends YiiModule
 
 	public function init() {
 		parent::init();
+		Yii::$app->navigation->breadcrumbs->removeLastUrl();
 		NavigationHelper::root();
 		$this->initProject();
 	}
