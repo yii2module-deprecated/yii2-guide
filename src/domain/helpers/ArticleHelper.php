@@ -2,16 +2,23 @@
 
 namespace yii2module\guide\domain\helpers;
 
+use Yii;
+use yii\helpers\Url;
 use yii2module\guide\module\Module;
 
 class ArticleHelper {
 
-	public static function collectionToItems($articles) {
+	public static function collectionToItems($collection, $url, $key = 'id') {
 		$items = [];
-		foreach($articles as $item) {
+		foreach($collection as $item) {
+			if(is_array($key)) {
+				$urlArray[$key[0]] = $item->{$key[1]};
+			} else {
+				$urlArray[$key] = $item->id;
+			}
 			$items[] = [
 				'label' => $item->title,
-				'url' => [Module::URL_ARTICLE_VIEW, 'id' => $item->id],
+				'url' => static::genUrl($url, $urlArray),
 			];
 		}
 		return $items;
@@ -19,9 +26,21 @@ class ArticleHelper {
 
 	public static function replaceLink($html) {
 		$pattern = '~<a href="([^.]+).md">([^<]+)?</a>~';
-		$replacement = '<a href="'.Module::URL_ARTICLE_VIEW.'?id=$1">$2</a>';
+		$url = static::genUrl(Module::URL_ARTICLE_VIEW, $params);
+		$replacement = '<a href="'.Url::to($url).'&id=$1">$2</a>';
 		$html = preg_replace($pattern, $replacement, $html);
 		return $html;
 	}
 
+	public static function genUrl($baseUrl, $params = []) {
+		$url = [];
+		$url[] = $baseUrl;
+		$url['project'] = Yii::$app->request->getQueryParam('project');
+		if(!empty($params)) {
+			foreach($params as $key => $value) {
+				$url[$key] = $value;
+			}
+		}
+		return $url;
+	}
 }

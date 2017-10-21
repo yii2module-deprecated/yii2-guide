@@ -1,15 +1,14 @@
 <?php
 
-/* @var $this yii\web\View */
-
+/* @var $this yii\web\View
+ * @var $collection array */
+use yii\widgets\Menu;
 use yii2module\guide\domain\helpers\ArticleHelper;
+use yii2module\guide\module\Module;
 
-$this->title = $entity->title;
-$html = ArticleHelper::replaceLink($entity->html);
+//$this->title = $entity->title;
 ?>
 
-<div class="guide-index">
-
-	<?= $html ?>
-
-</div>
+<?= Menu::widget([
+	'items' => ArticleHelper::collectionToItems($collection, Module::URL_ARTICLE_INDEX, ['project', 'id'])
+]) ?>
