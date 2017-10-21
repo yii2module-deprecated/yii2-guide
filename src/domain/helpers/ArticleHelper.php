@@ -8,6 +8,13 @@ use yii2module\guide\module\Module;
 
 class ArticleHelper {
 
+	public static function extractTileFromMarkdown($code) {
+		$md = trim($code);
+		$lines = preg_split('~(\n|\r\n)~', $md);
+		$firstLine = $lines[0];
+		return trim($firstLine, ' #');
+	}
+
 	public static function collectionToItems($collection, $url, $key = 'id') {
 		$items = [];
 		foreach($collection as $item) {

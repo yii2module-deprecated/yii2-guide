@@ -4,6 +4,7 @@ namespace yii2module\guide\domain\entities;
 
 use Michelf\MarkdownExtra;
 use yii2lab\domain\BaseEntity;
+use yii2module\guide\domain\helpers\ArticleHelper;
 
 class ArticleEntity extends BaseEntity {
 	
@@ -26,10 +27,6 @@ class ArticleEntity extends BaseEntity {
 	}
 
 	public function getTitle() {
-		$md = trim($this->md);
-		$lines = explode(PHP_EOL, $md);
-		$firstLine = $lines[0];
-		$firstLine = trim($firstLine, ' #');
-		return $firstLine;
+		return ArticleHelper::extractTileFromMarkdown($this->md);
 	}
 }
