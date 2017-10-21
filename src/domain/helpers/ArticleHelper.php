@@ -25,10 +25,8 @@ class ArticleHelper {
 	}
 
 	public static function replaceLink($html) {
-		$pattern = '~<a href="([^.]+).md">([^<]+)?</a>~';
-		$url = static::genUrl(Module::URL_ARTICLE_VIEW, $params);
-		$replacement = '<a href="'.Url::to($url).'&id=$1">$2</a>';
-		$html = preg_replace($pattern, $replacement, $html);
+		$html = static::replaceInternalLink($html);
+		$html = static::replaceExternalLink($html);
 		return $html;
 	}
 
@@ -42,5 +40,20 @@ class ArticleHelper {
 			}
 		}
 		return $url;
+	}
+
+	private static function replaceInternalLink($html) {
+		$pattern = '~<a href="([^.]+).md">([^<]+)?</a>~';
+		$url = static::genUrl(Module::URL_ARTICLE_VIEW);
+		$replacement = '<a href="'.Url::to($url).'&id=$1">$2</a>';
+		$html = preg_replace($pattern, $replacement, $html);
+		return $html;
+	}
+
+	private static function replaceExternalLink($html) {
+		$pattern = '~<a href="(http[^\"]+)">([^<]+)?</a>~';
+		$replacement = '<a href="$1" target="_blank">$2</a>';
+		$html = preg_replace($pattern, $replacement, $html);
+		return $html;
 	}
 }
