@@ -20,7 +20,7 @@ class NavigationHelper {
 
 	public static function article($id) {
 		$article = static::getEntity($id, 'article');
-		Yii::$app->navigation->breadcrumbs->create($article->title);
+		Yii::$app->navigation->breadcrumbs->create($article->title, ArticleHelper::genUrl(Module::URL_ARTICLE_VIEW, ['id' => $article->id]));
 	}
 
 	public static function chapter($id) {
