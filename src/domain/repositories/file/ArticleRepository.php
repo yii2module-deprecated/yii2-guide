@@ -13,6 +13,11 @@ class ArticleRepository extends BaseRepository {
 	public $dir;
 	public $main;
 
+	public function setProject($project_id) {
+		$project = Yii::$app->guide->doc->oneById($project_id);
+		$this->dir = $project->dir;
+	}
+
 	public function oneMain() {
 		return $this->oneById($this->main);
 	}

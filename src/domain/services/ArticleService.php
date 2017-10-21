@@ -15,4 +15,8 @@ class ArticleService extends ActiveBaseService {
 		return $this->repository->oneByIdWithChapter($id);
 	}
 
+	public function setProject($project_id) {
+		return $this->repository->setProject($project_id);
+	}
+
 }

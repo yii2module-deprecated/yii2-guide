@@ -26,7 +26,7 @@ class ChapterRepository extends BaseRepository {
 		return $entity;
 	}
 
-	public function allByParentId($id) {
+	protected function allByParentId($id) {
 		$query = $this->forgeQuery(null);
 		$query->where('parent_id', $id);
 		$collection = $this->all($query);
