@@ -4,7 +4,7 @@ namespace yii2module\guide\domain\entities;
 
 use yii2lab\domain\BaseEntity;
 
-class DocEntity extends BaseEntity {
+class ProjectEntity extends BaseEntity {
 
 	protected $id;
 	protected $title;

@@ -14,7 +14,7 @@ class NavigationHelper {
 	}
 
 	public static function project($id) {
-		$project = static::getEntity($id, 'doc');
+		$project = static::getEntity($id, 'project');
 		Yii::$app->navigation->breadcrumbs->create($project->title, [Module::URL_ARTICLE_INDEX, 'project_id' => $project->id]);
 	}
 
