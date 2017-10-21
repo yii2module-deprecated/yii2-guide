@@ -15,7 +15,6 @@ class ArticleController extends Controller {
 	}
 
 	public function actionView($project_id, $id = null) {
-		//prr($project,1,1);
 		$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
 		NavigationHelper::project($project_id);
 		if($id) {
