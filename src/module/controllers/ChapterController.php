@@ -12,7 +12,7 @@ class ChapterController extends Controller {
 		NavigationHelper::project($project_id);
 		$entity = Yii::$app->guide->chapter->oneByIdWithArticles($id);
 		if($id) {
-			Yii::$app->navigation->breadcrumbs->create($entity->title/*, [Module::URL_CHAPTER_VIEW, 'id' => $entity->id]*/);
+			NavigationHelper::chapter($entity);
 		}
 		return $this->render('index', compact('entity'));
 	}
