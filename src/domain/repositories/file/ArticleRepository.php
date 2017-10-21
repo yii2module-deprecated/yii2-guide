@@ -11,9 +11,13 @@ use yii2lab\helpers\yii\FileHelper;
 class ArticleRepository extends BaseRepository {
 
 	public $dir;
-	public $main;
+	public $main = 'README';
 
-	public function oneByDir($dir, $id = 'README') {
+	public function oneMainByDir($dir) {
+		return $this->oneByDir($dir, $this->main);
+	}
+
+	public function oneByDir($dir, $id) {
 		$content = FileHelper::load(Yii::getAlias("@{$dir}/{$id}.md"));
 		if(empty($content)) {
 			throw new NotFoundHttpException();

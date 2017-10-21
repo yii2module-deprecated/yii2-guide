@@ -7,8 +7,8 @@ use yii2lab\domain\services\ActiveBaseService;
 
 class ArticleService extends ActiveBaseService {
 
-	public function oneByDir($dir, $id = 'README') {
-		return $this->repository->oneByDir($dir, $id);
+	public function oneMainByDir($dir, $id = 'README') {
+		return $this->repository->oneMainByDir($dir, $id);
 	}
 
 	public function oneMain() {

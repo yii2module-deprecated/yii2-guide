@@ -24,7 +24,7 @@ class ProjectEntity extends BaseEntity {
 		if(!empty($this->title)) {
 			return $this->title;
 		}
-		$article = Yii::$app->guide->article->oneByDir($this->dir);
+		$article = Yii::$app->guide->article->oneMainByDir($this->dir);
 		return ArticleHelper::extractTileFromMarkdown($article->md);
 	}
 
