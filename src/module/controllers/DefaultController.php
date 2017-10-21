@@ -9,7 +9,7 @@ class DefaultController extends Controller {
 	
 	public function actionIndex() {
 		$collection = Yii::$app->guide->project->all();
-		return $this->render('index', compact('collection'));
+		return $this->render('list', compact('collection'));
 	}
 
 }

@@ -13,7 +13,7 @@ class ChapterController extends Controller {
 		if($id) {
 			$this->module->navigation->chapter($entity);
 		}
-		return $this->render('index', compact('entity'));
+		return $this->render('list', compact('entity'));
 	}
 
 }

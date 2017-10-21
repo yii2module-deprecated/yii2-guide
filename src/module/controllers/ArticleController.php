@@ -10,7 +10,7 @@ class ArticleController extends Controller {
 	public function actionIndex($project_id) {
 		$this->module->navigation->project($project_id);
 		$entity = Yii::$app->guide->article->oneMain();
-		return $this->render('index', compact('entity'));
+		return $this->render('view', compact('entity'));
 	}
 
 	public function actionView($project_id, $id = null) {
@@ -20,7 +20,7 @@ class ArticleController extends Controller {
 			$this->module->navigation->chapter($entity->chapter->parent);
 			$this->module->navigation->article($entity);
 		}
-		return $this->render('index', compact('entity'));
+		return $this->render('view', compact('entity'));
 	}
 
 }
