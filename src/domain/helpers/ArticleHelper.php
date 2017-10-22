@@ -9,6 +9,7 @@ use yii2module\guide\module\Module;
 class ArticleHelper {
 
 	public static function extractTileFromMarkdown($code) {
+		$code = strip_tags($code);
 		$md = trim($code);
 		$lines = preg_split('~(\n|\r\n)~', $md);
 		$firstLine = $lines[0];
@@ -51,9 +52,12 @@ class ArticleHelper {
 
 	private static function replaceInternalLink($html) {
 		$pattern = '~<a href="([^.]+).md">([^<]+)?</a>~';
-		$url = static::genUrl(Module::URL_ARTICLE_VIEW);
-		$replacement = '<a href="'.Url::to($url).'&id=$1">$2</a>';
-		$html = preg_replace($pattern, $replacement, $html);
+		$callback = function ($matches) {
+			$url = static::genUrl(Module::URL_ARTICLE_VIEW);
+			$url['id'] = $matches[1];
+			return '<a href="'.Url::to($url).'">'.$matches[2].'</a>';
+		};
+		$html = preg_replace_callback($pattern, $callback, $html);
 		return $html;
 	}
 
