@@ -4,7 +4,6 @@ namespace yii2module\guide\domain\helpers;
 
 use Yii;
 use yii\helpers\Url;
-use yii2module\guide\module\Module;
 
 class ArticleHelper {
 
@@ -53,7 +52,7 @@ class ArticleHelper {
 	private static function replaceInternalLink($html) {
 		$pattern = '~<a href="([^.]+).md">([^<]+)?</a>~';
 		$callback = function ($matches) {
-			$url = static::genUrl(Module::URL_ARTICLE_VIEW);
+			$url = static::genUrl(NavigationHelper::URL_ARTICLE_VIEW);
 			$url['id'] = $matches[1];
 			return '<a href="'.Url::to($url).'">'.$matches[2].'</a>';
 		};

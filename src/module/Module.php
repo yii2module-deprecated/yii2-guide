@@ -9,19 +9,18 @@ use yii2module\guide\domain\helpers\NavigationHelper;
 class Module extends YiiModule
 {
 
-	const URL_MODULE = '/guide';
-	const URL_ARTICLE_VIEW = '/guide/article/view';
-	const URL_ARTICLE_INDEX = '/guide/article';
-	const URL_CHAPTER_VIEW = '/guide/chapter/view';
-
 	public $navigation;
 
 	public function init() {
 		parent::init();
+		$this->initNavigation();
+		$this->initProject();
+	}
+
+	private function initNavigation() {
 		$this->navigation = Yii::createObject(NavigationHelper::class);
 		$this->navigation->root();
 		Yii::$app->navigation->breadcrumbs->removeLastUrl();
-		$this->initProject();
 	}
 
 	private function initProject() {
