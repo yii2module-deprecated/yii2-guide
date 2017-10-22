@@ -3,8 +3,17 @@
 namespace yii2module\guide\module\helpers;
 
 use yii\helpers\Url;
+use Michelf\MarkdownExtra;
 
 class ViewHelper {
+
+	public static function markdownToHtml($source) {
+		$markdown = new MarkdownExtra();
+		$html = $markdown->transform($source);
+		$html = static::replaceInternalLink($html);
+		$html = static::replaceExternalLink($html);
+		return $html;
+	}
 
 	public static function collectionToItems($collection, $url, $key = 'id') {
 		$items = [];
@@ -20,12 +29,6 @@ class ViewHelper {
 			];
 		}
 		return $items;
-	}
-
-	public static function replaceLink($html) {
-		$html = static::replaceInternalLink($html);
-		$html = static::replaceExternalLink($html);
-		return $html;
 	}
 
 	private static function replaceInternalLink($html) {

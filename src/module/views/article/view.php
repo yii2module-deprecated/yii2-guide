@@ -5,11 +5,8 @@
 use yii2module\guide\module\helpers\ViewHelper;
 
 $this->title = $entity->title;
-$html = ViewHelper::replaceLink($entity->html);
 ?>
 
-<div class="guide-index">
+<?= ViewHelper::markdownToHtml($entity->md) ?>
 
-	<?= $html ?>
-
-</div>
+<br/>
