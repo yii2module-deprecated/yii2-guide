@@ -4,7 +4,7 @@ namespace yii2module\guide\module;
 
 use Yii;
 use yii\base\Module as YiiModule;
-use yii2module\guide\domain\helpers\NavigationHelper;
+use yii2module\guide\module\helpers\NavigationHelper;
 
 class Module extends YiiModule
 {

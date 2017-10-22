@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\guide\domain\helpers;
+namespace yii2module\guide\module\helpers;
 
 use Yii;
 use yii2lab\domain\BaseEntity;
@@ -26,14 +26,26 @@ class NavigationHelper {
 
 	public function article($id) {
 		$article =$this->getEntity($id, 'article');
-		$url = ArticleHelper::genUrl(self::URL_ARTICLE_VIEW, ['id' => $article->id]);
+		$url = self::genUrl(self::URL_ARTICLE_VIEW, ['id' => $article->id]);
 		Yii::$app->navigation->breadcrumbs->create($article->title, $url);
 	}
 
 	public function chapter($id) {
 		$chapter =$this->getEntity($id, 'chapter');
-		$url = ArticleHelper::genUrl(self::URL_CHAPTER_VIEW, ['id' => $chapter->id]);
+		$url = self::genUrl(self::URL_CHAPTER_VIEW, ['id' => $chapter->id]);
 		Yii::$app->navigation->breadcrumbs->create($chapter->title, $url);
+	}
+
+	public static function genUrl($baseUrl, $params = []) {
+		$url = [];
+		$url[] = $baseUrl;
+		$url['project_id'] = Yii::$app->request->getQueryParam('project_id');
+		if(!empty($params)) {
+			foreach($params as $key => $value) {
+				$url[$key] = $value;
+			}
+		}
+		return $url;
 	}
 
 	private function getEntity($id, $serviceName) {
