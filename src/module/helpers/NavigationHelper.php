@@ -11,6 +11,7 @@ class NavigationHelper {
 	const URL_MODULE = '/guide';
 	const URL_ARTICLE_VIEW = '/guide/article/view';
 	const URL_ARTICLE_INDEX = '/guide/article';
+	const URL_ARTICLE_CREATE = '/guide/article/create';
 	const URL_CHAPTER_VIEW = '/guide/chapter/view';
 
 	public function root() {

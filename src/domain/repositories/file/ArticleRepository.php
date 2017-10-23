@@ -4,6 +4,7 @@ namespace yii2module\guide\domain\repositories\file;
 
 use Yii;
 use yii\web\NotFoundHttpException;
+use yii2lab\domain\BaseEntity;
 use yii2lab\domain\data\Query;
 use yii2lab\domain\repositories\BaseRepository;
 use yii2lab\helpers\yii\FileHelper;
@@ -12,6 +13,13 @@ class ArticleRepository extends BaseRepository {
 
 	public $dir;
 	public $main = 'README';
+
+	public function createInProject(BaseEntity $entity, $project_id) {
+		$project = Yii::$app->guide->project->oneById($project_id);
+		$fileName = $project->dir . '/' . $entity->id . '.md';
+		$fileName = ROOT_DIR . '/' . $fileName;
+		FileHelper::save($fileName, $entity->md);
+	}
 
 	public function oneMainByDir($dir) {
 		return $this->oneByDir($dir, $this->main);
