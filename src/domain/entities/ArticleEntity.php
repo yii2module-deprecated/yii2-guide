@@ -12,6 +12,14 @@ class ArticleEntity extends BaseEntity {
 	protected $md;
 	protected $chapter;
 
+	public function rules()
+	{
+		return [
+			['id', 'required'],
+			['id', 'match', 'pattern' => '/^[a-z-]+$/i']
+		];
+	}
+
 	public function fieldType() {
 		return [
 			'chapter' => [

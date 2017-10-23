@@ -4,9 +4,12 @@ namespace yii2module\guide\module\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
+use yii2lab\notify\domain\widgets\Alert;
+use yii2module\guide\domain\entities\ArticleEntity;
+use yii2module\guide\module\forms\ArticleForm;
 use yii2module\guide\module\helpers\NavigationHelper;
 
 class ArticleController extends Controller {
@@ -15,18 +18,12 @@ class ArticleController extends Controller {
 		return [
 			'access' => [
 				'class' => AccessControl::className(),
-				'only' => ['create'],
+				'only' => ['update', 'delete'],
 				'rules' => [
 					[
 						'allow' => true,
-						'roles' => ['guide.create'],
+						'roles' => ['guide.modify'],
 					],
-				],
-			],
-			'verbs' => [
-				'class' => VerbFilter::className(),
-				'actions' => [
-					'create' => ['post'],
 				],
 			],
 		];
@@ -48,13 +45,43 @@ class ArticleController extends Controller {
 			}
 			return $this->render('view', compact('entity'));
 		} catch(NotFoundHttpException $e) {
-			return $this->render('create', compact('project_id', 'id'));
+			$chapter = Yii::$app->guide->repositories->chapter->oneByArticleId($id);
+			return $this->render('viewNotFound', compact('project_id', 'id'));
 		}
 	}
 
-	public function actionCreate($project_id, $id = null) {
-		Yii::$app->guide->article->createInProject($id, $project_id);
-		return $this->redirect(NavigationHelper::genUrl(NavigationHelper::URL_ARTICLE_VIEW, compact('project_id', 'id')));
+	public function actionUpdate($project_id, $id) {
+		$model = new ArticleForm();
+		$body = Yii::$app->request->post('ArticleForm');
+		if($body) {
+			$model->setAttributes($body, false);
+			if($model->validate()) {
+				try{
+					$data['id'] = $id;
+					$data['md'] = $body['md'];
+					Yii::$app->guide->article->updateInProject($data, $project_id);
+					Yii::$app->notify->flash->send(['guide/article', 'saved_success'], Alert::TYPE_SUCCESS);
+					return $this->redirect(NavigationHelper::genUrl(NavigationHelper::URL_ARTICLE_VIEW, compact('project_id', 'id')));
+				} catch (UnprocessableEntityHttpException $e){
+					$model->addErrorsFromException($e);
+				}
+			}
+		} else {
+			/** @var ArticleEntity $entity */
+			try {
+				$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
+			} catch(NotFoundHttpException $e) {
+				$entity = Yii::$app->guide->factory->entity->create($this->id, ['id' => $id]);
+			}
+			$model->setAttributes($entity->toArray(), false);
+		}
+		if($id) {
+			$this->module->navigation->project($project_id);
+			$this->module->navigation->chapter($entity->chapter->parent);
+			$this->module->navigation->article($entity);
+			$this->module->navigation->articleUpdate($entity);
+		}
+		return $this->render('update', ['model' => $model]);
 	}
 
 }
