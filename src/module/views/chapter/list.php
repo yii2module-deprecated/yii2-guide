@@ -16,3 +16,5 @@ $this->title = $entity->title;
 <?= Menu::widget([
 	'items' => ViewHelper::collectionToItems($entity->articles, NavigationHelper::URL_ARTICLE_VIEW)
 ]) ?>
+
+<br/>
