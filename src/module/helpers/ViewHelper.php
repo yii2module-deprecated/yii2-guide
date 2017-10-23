@@ -7,6 +7,14 @@ use Michelf\MarkdownExtra;
 
 class ViewHelper {
 
+	public static function collectionToMap($collection) {
+		$map = [];
+		foreach($collection as $entity) {
+			$map[$entity->group][] = $entity;
+		}
+		return $map;
+	}
+
 	public static function markdownToHtml($source) {
 		$markdown = new MarkdownExtra();
 		$html = $markdown->transform($source);

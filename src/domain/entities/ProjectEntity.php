@@ -8,10 +8,13 @@ use yii2module\guide\domain\helpers\ArticleHelper;
 
 class ProjectEntity extends BaseEntity {
 
+	const DEFAULT_GROUP = 'main';
+
 	protected $id;
 	protected $title;
 	protected $dir;
 	protected $main = 'README';
+	protected $group;
 
 	public function getId() {
 		if(!empty($this->id)) {
@@ -26,6 +29,17 @@ class ProjectEntity extends BaseEntity {
 		}
 		$article = Yii::$app->guide->article->oneMainByDir($this->dir);
 		return ArticleHelper::extractTileFromMarkdown($article->md);
+	}
+
+	public function getGroup() {
+		if(!empty($this->group)) {
+			return $this->group;
+		}
+		$idParts = explode('-', $this->id);
+		if(count($idParts) > 1) {
+			return $idParts[0];
+		}
+		return self::DEFAULT_GROUP;
 	}
 
 }
