@@ -60,7 +60,7 @@ class ArticleController extends Controller {
 					$data['id'] = $id;
 					$data['md'] = $body['md'];
 					Yii::$app->guide->article->updateInProject($data, $project_id);
-					Yii::$app->notify->flash->send(['guide/article', 'saved_success'], Alert::TYPE_SUCCESS);
+					Yii::$app->notify->flash->send(['main', 'update_success'], Alert::TYPE_SUCCESS);
 					return $this->redirect(NavigationHelper::genUrl(NavigationHelper::URL_ARTICLE_VIEW, compact('project_id', 'id')));
 				} catch (UnprocessableEntityHttpException $e){
 					$model->addErrorsFromException($e);
@@ -77,7 +77,9 @@ class ArticleController extends Controller {
 		}
 		if($id) {
 			$this->module->navigation->project($project_id);
-			$this->module->navigation->chapter($entity->chapter->parent);
+			if(is_object($entity->chapter)) {
+				$this->module->navigation->chapter($entity->chapter->parent);
+			}
 			$this->module->navigation->article($entity);
 			$this->module->navigation->articleUpdate($entity);
 		}

@@ -15,6 +15,7 @@ class ArticleRepository extends BaseRepository {
 	public $main = 'README';
 
 	public function updateInProject(BaseEntity $entity, $project_id) {
+		$entity->validate();
 		$project = Yii::$app->guide->project->oneById($project_id);
 		$fileName = $project->dir . '/' . $entity->id . '.md';
 		$fileName = ROOT_DIR . '/' . $fileName;
@@ -60,7 +61,11 @@ class ArticleRepository extends BaseRepository {
 
 	public function oneByIdWithChapter($id) {
 		$entity = $this->oneById($id);
-		$entity->chapter = $this->domain->repositories->chapter->oneByArticleId($id);
+		try {
+			$entity->chapter = $this->domain->repositories->chapter->oneByArticleId($id);
+		} catch(NotFoundHttpException $e) {
+
+		}
 		return $entity;
 	}
 
