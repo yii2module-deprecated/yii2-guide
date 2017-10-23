@@ -35,7 +35,7 @@ class ProjectEntity extends BaseEntity {
 		if(!empty($this->group)) {
 			return $this->group;
 		}
-		$idParts = explode('-', $this->id);
+		$idParts = explode('.', $this->id);
 		if(count($idParts) > 1) {
 			return $idParts[0];
 		}
