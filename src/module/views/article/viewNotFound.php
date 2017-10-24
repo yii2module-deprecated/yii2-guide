@@ -9,7 +9,7 @@ use yii2module\guide\module\helpers\NavigationHelper;
 $this->title = t('guide/article', 'title');
 $url = NavigationHelper::genUrl(NavigationHelper::URL_ARTICLE_UPDATE, compact('project_id', 'id'));
 Yii::$app->notify->flash->send(['guide/article', 'not_found'], Alert::TYPE_DANGER, null);
-$buttonVisibleClass = !Yii::$app->user->can('guide.create') ? 'hidden' : '';
+$buttonVisibleClass = !Yii::$app->user->can('guide.modify') ? 'hidden' : '';
 ?>
 
 <?= Html::a(t('action', 'CREATE'), $url, [
