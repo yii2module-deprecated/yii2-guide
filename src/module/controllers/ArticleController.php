@@ -52,18 +52,27 @@ class ArticleController extends Controller {
 
 	public function actionUpdate($project_id, $id) {
 		$model = new ArticleForm();
-		$body = Yii::$app->request->post('ArticleForm');
-		if($body) {
+		if(Yii::$app->request->isPost) {
+			$body = Yii::$app->request->post('ArticleForm');
+			$isPreview = Yii::$app->request->post('isPreview');
 			$model->setAttributes($body, false);
 			if($model->validate()) {
-				try{
-					$data['id'] = $id;
-					$data['content'] = $body['content'];
-					Yii::$app->guide->article->updateInProject($data, $project_id);
-					Yii::$app->notify->flash->send(['main', 'update_success'], Alert::TYPE_SUCCESS);
-					return $this->redirect(NavigationHelper::genUrl(NavigationHelper::URL_ARTICLE_VIEW, compact('project_id', 'id')));
-				} catch (UnprocessableEntityHttpException $e){
-					$model->addErrorsFromException($e);
+				if($isPreview) {
+					try {
+						$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
+					} catch(NotFoundHttpException $e) {
+						$entity = Yii::$app->guide->factory->entity->create($this->id, ['id' => $id]);
+					}
+				} else {
+					try{
+						$data['id'] = $id;
+						$data['content'] = $body['content'];
+						Yii::$app->guide->article->updateInProject($data, $project_id);
+						Yii::$app->notify->flash->send(['main', 'update_success'], Alert::TYPE_SUCCESS);
+						return $this->redirect(NavigationHelper::genUrl(NavigationHelper::URL_ARTICLE_VIEW, compact('project_id', 'id')));
+					} catch (UnprocessableEntityHttpException $e){
+						$model->addErrorsFromException($e);
+					}
 				}
 			}
 		} else {
