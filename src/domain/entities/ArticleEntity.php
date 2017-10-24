@@ -11,6 +11,7 @@ class ArticleEntity extends BaseEntity {
 	protected $id;
 	protected $content;
 	protected $chapter;
+	protected $project;
 
 	public function rules()
 	{
@@ -24,6 +25,9 @@ class ArticleEntity extends BaseEntity {
 		return [
 			'chapter' => [
 				'type' => ChapterEntity::className(),
+			],
+			'project' => [
+				'type' => ProjectEntity::className(),
 			],
 		];
 	}

@@ -3,9 +3,9 @@
 namespace yii2module\guide\module\controllers;
 
 use Yii;
-use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii2lab\app\helpers\Config;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii2lab\notify\domain\widgets\Alert;
 use yii2module\guide\domain\entities\ArticleEntity;
@@ -16,16 +16,7 @@ class ArticleController extends Controller {
 
 	public function behaviors() {
 		return [
-			'access' => [
-				'class' => AccessControl::className(),
-				'only' => ['update', 'delete'],
-				'rules' => [
-					[
-						'allow' => true,
-						'roles' => ['guide.modify'],
-					],
-				],
-			],
+			'access' => Config::genAccess('guide.modify', ['update', 'delete']),
 		];
 	}
 
@@ -36,10 +27,10 @@ class ArticleController extends Controller {
 	}
 
 	public function actionView($project_id, $id = null) {
+		$this->module->navigation->project($project_id);
 		try {
-			$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
-			$this->module->navigation->project($project_id);
 			if($id) {
+				$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
 				$this->module->navigation->chapter($entity->chapter->parent);
 				$this->module->navigation->article($entity);
 			}
@@ -84,8 +75,8 @@ class ArticleController extends Controller {
 			}
 			$model->setAttributes($entity->toArray(), false);
 		}
+		$this->module->navigation->project($project_id);
 		if($id) {
-			$this->module->navigation->project($project_id);
 			if(is_object($entity->chapter)) {
 				$this->module->navigation->chapter($entity->chapter->parent);
 			}

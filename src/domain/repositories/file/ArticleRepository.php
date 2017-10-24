@@ -11,7 +11,7 @@ use yii2lab\helpers\yii\FileHelper;
 
 class ArticleRepository extends BaseRepository {
 
-	public $dir;
+	public $project;
 	public $main = 'README';
 
 	public function updateInProject(BaseEntity $entity, $project_id) {
@@ -39,7 +39,7 @@ class ArticleRepository extends BaseRepository {
 
 	public function setProject($project_id) {
 		$project = Yii::$app->guide->project->oneById($project_id);
-		$this->dir = $project->dir;
+		$this->project = $project;
 	}
 
 	public function oneMain() {
@@ -48,24 +48,24 @@ class ArticleRepository extends BaseRepository {
 
 	public function oneById($id, Query $query = null) {
 		/** @var Query $query */
-		$content = FileHelper::load(Yii::getAlias("@{$this->dir}/{$id}.md"));
+		$content = FileHelper::load(Yii::getAlias("@{$this->project->dir}/{$id}.md"));
 		//$query = $this->forgeQuery($query);
 		if(empty($content)) {
 			throw new NotFoundHttpException();
 		}
-		return $this->forgeEntity([
+		$entity = $this->forgeEntity([
 			'id' => $id,
 			'content' => $content,
 		]);
+		$entity->project = $this->project;
+		return $entity;
 	}
 
 	public function oneByIdWithChapter($id) {
 		$entity = $this->oneById($id);
 		try {
 			$entity->chapter = $this->domain->repositories->chapter->oneByArticleId($id);
-		} catch(NotFoundHttpException $e) {
-
-		}
+		} catch(NotFoundHttpException $e) {}
 		return $entity;
 	}
 
