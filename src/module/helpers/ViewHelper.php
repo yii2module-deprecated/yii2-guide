@@ -63,13 +63,15 @@ class ViewHelper {
 	private static function replaceImg($html) {
 		$project_id = Yii::$app->request->getQueryParam('project_id');
 		$project = Yii::$app->guide->project->oneById($project_id);
-		$pattern = '~<img src="([\w/]+).(png|jpg|jpeg|gif)"([^\>]+)>~';
+		$pattern = '~<img src="([^"]+)"([^\>]*)>~';
 		$html = preg_replace_callback($pattern, function($matches) use($project) {
-			$name = $matches[1];
-			$extension = $matches[2];
-			$fileName = ROOT_DIR . DS . $project->dir . DS . $name . '.' . $extension;
+			$url = $matches[1];
+			if(strpos($url, '://') !== false) {
+				return $matches[0];
+			}
+			$fileName = ROOT_DIR . DS . $project->dir . DS . $url;
 			$data = Html::getDataUrl($fileName);
-			return "<img src=\"{$data}\"{$matches[3]}>";
+			return "<img src=\"{$data}\"{$matches[2]}>";
 		}, $html);
 		return $html;
 	}
