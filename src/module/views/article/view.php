@@ -25,6 +25,6 @@ $visibleClass = !Yii::$app->user->can('guide.modify') ? 'hidden' : '';
 	]) ?>
 </div>
 
-<?= ViewHelper::markdownToHtml($entity->md) ?>
+<?= ViewHelper::markdownToHtml($entity->content) ?>
 
 <br/>

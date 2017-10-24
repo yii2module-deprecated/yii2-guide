@@ -8,8 +8,8 @@ class ArticleHelper {
 
 	public static function extractTileFromMarkdown($code) {
 		$code = strip_tags($code);
-		$md = trim($code);
-		$lines = preg_split('~(\n|\r\n)~', $md);
+		$content = trim($code);
+		$lines = preg_split('~(\n|\r\n)~', $content);
 		$firstLine = $lines[0];
 		return trim($firstLine, ' #');
 	}

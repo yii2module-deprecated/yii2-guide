@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 	<div class="col-lg-12">
 		<?php $form = ActiveForm::begin(); ?>
 
-		<?= $form->field($model, 'md')->textarea(['rows' => 18]); ?>
+		<?= $form->field($model, 'content')->textarea(['rows' => 18]); ?>
 
 		<div class="form-group">
 			<?= Html::submitButton(t('action', 'SAVE'), ['class' => 'btn btn-primary']) ?>

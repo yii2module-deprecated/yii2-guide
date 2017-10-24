@@ -28,7 +28,7 @@ class ProjectEntity extends BaseEntity {
 			return $this->title;
 		}
 		$article = Yii::$app->guide->article->oneMainByDir($this->dir);
-		return ArticleHelper::extractTileFromMarkdown($article->md);
+		return ArticleHelper::extractTileFromMarkdown($article->content);
 	}
 
 	public function getGroup() {

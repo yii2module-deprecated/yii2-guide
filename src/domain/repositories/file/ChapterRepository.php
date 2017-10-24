@@ -35,6 +35,6 @@ class ChapterRepository extends BaseRepository {
 
 	protected function getCollection() {
 		$main = $this->domain->repositories->article->oneMain();
-		return ChapterHelper::extractAll($main->md);
+		return ChapterHelper::extractAll($main->content);
 	}
 }

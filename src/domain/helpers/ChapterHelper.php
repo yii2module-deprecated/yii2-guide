@@ -6,17 +6,17 @@ use yii\apidoc\helpers\IndexFileAnalyzer;
 
 class ChapterHelper {
 	
-	public static function extractAll($md) {
-		$chapters = self::getChapters($md);
+	public static function extractAll($content) {
+		$chapters = self::getChapters($content);
 		foreach($chapters as &$chapter) {
 			$chapter = self::normalizeEntity($chapter);
 		}
 		return self::mapToFlat($chapters);
 	}
 	
-	private static function getChapters($md) {
+	private static function getChapters($content) {
 		$indexAnalyzer = new IndexFileAnalyzer();
-		$contents = $indexAnalyzer->analyze($md);
+		$contents = $indexAnalyzer->analyze($content);
 		return $contents;
 	}
 	

@@ -9,7 +9,7 @@ use yii2module\guide\domain\helpers\ArticleHelper;
 class ArticleEntity extends BaseEntity {
 	
 	protected $id;
-	protected $md;
+	protected $content;
 	protected $chapter;
 
 	public function rules()
@@ -29,8 +29,8 @@ class ArticleEntity extends BaseEntity {
 	}
 
 	public function getTitle() {
-		if(!empty($this->md)) {
-			return ArticleHelper::extractTileFromMarkdown($this->md);
+		if(!empty($this->content)) {
+			return ArticleHelper::extractTileFromMarkdown($this->content);
 		}
 		if(!empty($this->id)) {
 			$title = Inflector::id2camel($this->id);
@@ -40,9 +40,9 @@ class ArticleEntity extends BaseEntity {
 		}
 	}
 
-	public function getMd() {
-		if(!empty($this->md)) {
-			return $this->md;
+	public function getContent() {
+		if(!empty($this->content)) {
+			return $this->content;
 		}
 		$title = $this->getTitle();
 		if(!empty($title)) {

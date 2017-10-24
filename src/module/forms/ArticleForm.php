@@ -8,7 +8,7 @@ class ArticleForm extends Model
 {
 	
 	public $id;
-	public $md;
+	public $content;
 
 	/**
 	 * @inheritdoc
@@ -17,7 +17,7 @@ class ArticleForm extends Model
 	{
 		return [
 			'id' 		=> t('guide/article', 'id'),
-			'md' 		=> t('guide/article', 'md'),
+			'content' 		=> t('guide/article', 'content'),
 		];
 	}
 	

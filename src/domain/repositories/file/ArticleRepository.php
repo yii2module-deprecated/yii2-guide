@@ -19,7 +19,7 @@ class ArticleRepository extends BaseRepository {
 		$project = Yii::$app->guide->project->oneById($project_id);
 		$fileName = $project->dir . '/' . $entity->id . '.md';
 		$fileName = ROOT_DIR . '/' . $fileName;
-		FileHelper::save($fileName, $entity->md);
+		FileHelper::save($fileName, $entity->content);
 	}
 
 	public function oneMainByDir($dir) {
@@ -33,7 +33,7 @@ class ArticleRepository extends BaseRepository {
 		}
 		return $this->forgeEntity([
 			'id' => $id,
-			'md' => $content,
+			'content' => $content,
 		]);
 	}
 
@@ -55,7 +55,7 @@ class ArticleRepository extends BaseRepository {
 		}
 		return $this->forgeEntity([
 			'id' => $id,
-			'md' => $content,
+			'content' => $content,
 		]);
 	}
 
