@@ -5,6 +5,7 @@ namespace yii2module\guide\module\controllers;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\ServerErrorHttpException;
 use yii2lab\app\helpers\Config;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii2lab\notify\domain\widgets\Alert;
@@ -70,6 +71,9 @@ class ArticleController extends Controller {
 			/** @var ArticleEntity $entity */
 			try {
 				$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
+				if($entity->project->readonly) {
+					throw new ServerErrorHttpException(t('main', 'readonly_warning'));
+				}
 			} catch(NotFoundHttpException $e) {
 				$entity = Yii::$app->guide->factory->entity->create($this->id, ['id' => $id]);
 			}

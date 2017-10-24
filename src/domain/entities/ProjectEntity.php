@@ -14,6 +14,7 @@ class ProjectEntity extends BaseEntity {
 	protected $title;
 	protected $dir;
 	protected $main = 'README';
+	protected $readonly = true;
 	protected $group;
 
 	public function getId() {

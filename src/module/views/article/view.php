@@ -7,7 +7,7 @@ use yii2module\guide\module\helpers\NavigationHelper;
 use yii2module\guide\module\helpers\ViewHelper;
 
 $this->title = $entity->title;
-$visibleClass = !Yii::$app->user->can('guide.modify') ? 'hidden' : '';
+$visibleClass = !Yii::$app->user->can('guide.modify') || $entity->project->readonly ? 'hidden' : '';
 ?>
 
 <div class="pull-right <?= $visibleClass ?>">
