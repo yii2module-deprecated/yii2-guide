@@ -5,7 +5,7 @@ namespace yii2module\guide\module\helpers;
 use Yii;
 use yii\helpers\Url;
 use Michelf\MarkdownExtra;
-use yii2lab\helpers\yii\FileHelper;
+use yii2lab\helpers\yii\Html;
 
 class ViewHelper {
 
@@ -68,7 +68,7 @@ class ViewHelper {
 			$name = $matches[1];
 			$extension = $matches[2];
 			$fileName = ROOT_DIR . DS . $project->dir . DS . $name . '.' . $extension;
-			$data = FileHelper::getDataUrl($fileName);
+			$data = Html::getDataUrl($fileName);
 			return "<img src=\"{$data}\"{$matches[3]}>";
 		}, $html);
 		return $html;
