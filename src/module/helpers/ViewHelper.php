@@ -2,8 +2,10 @@
 
 namespace yii2module\guide\module\helpers;
 
+use Yii;
 use yii\helpers\Url;
 use Michelf\MarkdownExtra;
+use yii2lab\helpers\yii\FileHelper;
 
 class ViewHelper {
 
@@ -20,6 +22,7 @@ class ViewHelper {
 		$html = $markdown->transform($source);
 		$html = static::replaceInternalLink($html);
 		$html = static::replaceExternalLink($html);
+		$html = static::replaceImg($html);
 		return $html;
 	}
 
@@ -54,6 +57,20 @@ class ViewHelper {
 		$pattern = '~<a href="(http[^\"]+)">([^<]+)?</a>~';
 		$replacement = '<a href="$1" target="_blank">$2</a>';
 		$html = preg_replace($pattern, $replacement, $html);
+		return $html;
+	}
+
+	private static function replaceImg($html) {
+		$project_id = Yii::$app->request->getQueryParam('project_id');
+		$project = Yii::$app->guide->project->oneById($project_id);
+		$pattern = '~<img src="([\w/]+).(png|jpg|jpeg|gif)"([^\>]+)>~';
+		$html = preg_replace_callback($pattern, function($matches) use($project) {
+			$name = $matches[1];
+			$extension = $matches[2];
+			$fileName = ROOT_DIR . DS . $project->dir . DS . $name . '.' . $extension;
+			$data = FileHelper::getDataUrl($fileName);
+			return "<img src=\"{$data}\"{$matches[3]}>";
+		}, $html);
 		return $html;
 	}
 }
