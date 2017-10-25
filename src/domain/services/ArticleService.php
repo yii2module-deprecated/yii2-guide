@@ -8,7 +8,7 @@ use yii2lab\domain\services\ActiveBaseService;
 class ArticleService extends ActiveBaseService {
 
 	public function updateInProject($data, $project_id) {
-		Yii::$app->account->auth->can('guide.modify', $this->repository->project);
+		Yii::$app->account->rbac->can('guide.modify', $this->repository->project);
 		$entity = $this->domain->factory->entity->create($this->id, $data);
 		return $this->repository->updateInProject($entity, $project_id);
 	}
