@@ -28,3 +28,5 @@ use yii2module\guide\module\helpers\ViewHelper;
 		<?= ViewHelper::markdownToHtml($model->content) ?>
 	</div>
 </div>
+
+<br/>
