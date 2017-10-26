@@ -14,6 +14,7 @@ class NavigationHelper {
 	const URL_ARTICLE_CREATE = '/guide/article/create';
 	const URL_ARTICLE_UPDATE = '/guide/article/update';
 	const URL_ARTICLE_DELETE = '/guide/article/delete';
+	const URL_ARTICLE_CODE = '/guide/article/code';
 	const URL_CHAPTER_VIEW = '/guide/chapter/view';
 
 	public function root() {
@@ -37,6 +38,12 @@ class NavigationHelper {
 		$article = $this->getEntity($id, 'article');
 		$url = self::genUrl(self::URL_ARTICLE_UPDATE, ['id' => $article->id]);
 		Yii::$app->navigation->breadcrumbs->create(['action', 'UPDATE'], $url);
+	}
+
+	public function articleCode($id) {
+		$article = $this->getEntity($id, 'article');
+		$url = self::genUrl(self::URL_ARTICLE_CODE, ['id' => $article->id]);
+		Yii::$app->navigation->breadcrumbs->create(['action', 'CODE'], $url);
 	}
 
 	public function chapter($id) {

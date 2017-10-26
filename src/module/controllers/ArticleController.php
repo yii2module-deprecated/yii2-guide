@@ -41,7 +41,15 @@ class ArticleController extends Controller {
 		}
 	}
 
-	public function actionUpdate($project_id, $id) {
+	public function actionCode($id) {
+		$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
+		$this->module->navigation->chapter($entity->chapter->parent);
+		$this->module->navigation->article($entity);
+		$this->module->navigation->articleCode($entity);
+		return $this->render('code', compact('entity'));
+	}
+
+	public function actionUpdate($id) {
 		$model = new ArticleForm();
 		if(Yii::$app->request->isPost) {
 			$body = Yii::$app->request->post('ArticleForm');
