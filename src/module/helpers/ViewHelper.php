@@ -28,6 +28,8 @@ class ViewHelper {
 		$html = static::replaceExternalLink($html);
 		$html = static::replaceCode($html);
 		$html = static::replaceImg($html);
+		$html = static::replaceAlert($html);
+		$html = static::replaceSelect($html);
 		return $html;
 	}
 
@@ -82,15 +84,28 @@ class ViewHelper {
 	}
 
 	private static function replaceCode($html) {
-		$project_id = Yii::$app->request->getQueryParam('project_id');
-		$project = Yii::$app->guide->project->oneById($project_id);
 		$pattern = '~<pre>\s*<code class=\"([\w]+)\">([\s\S]+?)</code>\s*</pre>~';
-		$html = preg_replace_callback($pattern, function($matches) use($project) {
+		$html = preg_replace_callback($pattern, function($matches) {
 			$block['language'] = $matches[1];
 			$block['content'] = html_entity_decode($matches[2]);
 			$html = self::renderCode($block);
-			//$html = str_replace('&gt;', '>', $html);
 			return $html;
+		}, $html);
+		return $html;
+	}
+
+	private static function replaceAlert($html) {
+		$pattern = '~<blockquote>\s*<p>\s*(\w+?)\:~';
+		$html = preg_replace_callback($pattern, function($matches) {
+			return '<blockquote class="'.strtolower($matches[1]).'"><p><b>'.$matches[1].'</b>:';
+		}, $html);
+		return $html;
+	}
+
+	private static function replaceSelect($html) {
+		$pattern = '~\[\[(.+?)\]\]~';
+		$html = preg_replace_callback($pattern, function($matches) {
+			return '<span class="broken-link">'.$matches[1].'</span>';
 		}, $html);
 		return $html;
 	}
