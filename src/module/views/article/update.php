@@ -8,6 +8,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii2module\guide\module\helpers\ViewHelper;
 
+$this->title = t('action', 'UPDATE');
+
 ?>
 
 <div class="row">
