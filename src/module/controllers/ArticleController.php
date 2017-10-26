@@ -20,14 +20,12 @@ class ArticleController extends Controller {
 		];
 	}
 
-	public function actionIndex($project_id) {
-		$this->module->navigation->project($project_id);
+	public function actionIndex() {
 		$entity = Yii::$app->guide->article->oneMain();
 		return $this->render('view', compact('entity'));
 	}
 
-	public function actionView($project_id, $id = null) {
-		$this->module->navigation->project($project_id);
+	public function actionView($id = null) {
 		try {
 			if($id) {
 				$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
@@ -37,7 +35,7 @@ class ArticleController extends Controller {
 			return $this->render('view', compact('entity'));
 		} catch(NotFoundHttpException $e) {
 			$chapter = Yii::$app->guide->repositories->chapter->oneByArticleId($id);
-			return $this->render('viewNotFound', compact('project_id', 'id'));
+			return $this->render('viewNotFound', compact('id'));
 		}
 	}
 
@@ -66,7 +64,7 @@ class ArticleController extends Controller {
 					try{
 						$data['id'] = $id;
 						$data['content'] = $body['content'];
-						Yii::$app->guide->article->updateInProject($data, $project_id);
+						Yii::$app->guide->article->update($data);
 						Yii::$app->notify->flash->send(['main', 'update_success'], Alert::TYPE_SUCCESS);
 						return $this->redirect(NavigationHelper::genUrl(NavigationHelper::URL_ARTICLE_VIEW, compact('project_id', 'id')));
 					} catch (UnprocessableEntityHttpException $e){
@@ -83,7 +81,6 @@ class ArticleController extends Controller {
 			}
 			$model->setAttributes($entity->toArray(), false);
 		}
-		$this->module->navigation->project($project_id);
 		if($id) {
 			if(is_object($entity->chapter)) {
 				$this->module->navigation->chapter($entity->chapter->parent);

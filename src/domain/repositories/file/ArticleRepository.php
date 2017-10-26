@@ -14,9 +14,9 @@ class ArticleRepository extends BaseRepository {
 	public $project;
 	public $main = 'README';
 
-	public function updateInProject(BaseEntity $entity, $project_id) {
+	public function update(BaseEntity $entity) {
 		$entity->validate();
-		$project = Yii::$app->guide->project->oneById($project_id);
+		$project = Yii::$app->guide->project->oneById($this->project->id);
 		$fileName = $project->dir . '/' . $entity->id . '.md';
 		$fileName = ROOT_DIR . '/' . $fileName;
 		FileHelper::save($fileName, $entity->content);

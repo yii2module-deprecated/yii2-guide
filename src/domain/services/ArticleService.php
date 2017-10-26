@@ -7,10 +7,10 @@ use yii2lab\domain\services\ActiveBaseService;
 
 class ArticleService extends ActiveBaseService {
 
-	public function updateInProject($data, $project_id) {
+	public function update($data) {
 		Yii::$app->account->rbac->can('guide.modify', $this->repository->project);
 		$entity = $this->domain->factory->entity->create($this->id, $data);
-		return $this->repository->updateInProject($entity, $project_id);
+		return $this->repository->update($entity);
 	}
 
 	public function oneMainByDir($dir, $id = 'README') {
@@ -27,6 +27,10 @@ class ArticleService extends ActiveBaseService {
 
 	public function setProject($project_id) {
 		return $this->repository->setProject($project_id);
+	}
+
+	public function getProject() {
+		return $this->repository->project;
 	}
 
 }

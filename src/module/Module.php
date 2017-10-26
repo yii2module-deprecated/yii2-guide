@@ -27,6 +27,7 @@ class Module extends YiiModule
 		$project_id = Yii::$app->request->getQueryParam('project_id');
 		if($project_id) {
 			Yii::$app->guide->article->setProject($project_id);
+			$this->navigation->project($project_id);
 		}
 	}
 }
