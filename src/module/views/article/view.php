@@ -2,9 +2,12 @@
 
 /* @var $this yii\web\View */
 
+use yii\apidoc\templates\bootstrap\assets\AssetBundle;
 use yii2lab\helpers\yii\Html;
 use yii2module\guide\module\helpers\NavigationHelper;
 use yii2module\guide\module\helpers\ViewHelper;
+
+AssetBundle::register($this);
 
 $this->title = $entity->title;
 ?>
