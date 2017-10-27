@@ -2,13 +2,9 @@
 
 /* @var $this yii\web\View */
 
-use yii\apidoc\templates\bootstrap\assets\AssetBundle;
 use yii2lab\helpers\yii\Html;
-use yii2module\guide\module\helpers\MarkdownHelper;
 use yii2module\guide\module\helpers\NavigationHelper;
-use yii2module\guide\module\helpers\ViewHelper;
-
-AssetBundle::register($this);
+use yii2module\guide\module\widgets\Markdown;
 
 $this->title = $entity->title;
 ?>
@@ -39,6 +35,6 @@ if(Yii::$app->user->can('guide.modify', $entity->project)) {
 
 </div>
 
-<?= MarkdownHelper::toHtml($entity->content) ?>
+<?= Markdown::widget(['content' => $entity->content]) ?>
 
 <br/>
