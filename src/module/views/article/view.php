@@ -4,6 +4,7 @@
 
 use yii\apidoc\templates\bootstrap\assets\AssetBundle;
 use yii2lab\helpers\yii\Html;
+use yii2module\guide\module\helpers\MarkdownHelper;
 use yii2module\guide\module\helpers\NavigationHelper;
 use yii2module\guide\module\helpers\ViewHelper;
 
@@ -38,6 +39,6 @@ if(Yii::$app->user->can('guide.modify', $entity->project)) {
 
 </div>
 
-<?= ViewHelper::markdownToHtml($entity->content) ?>
+<?= MarkdownHelper::toHtml($entity->content) ?>
 
 <br/>
