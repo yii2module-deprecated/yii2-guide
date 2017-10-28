@@ -6,7 +6,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii2module\guide\module\helpers\ViewHelper;
+use yii2module\guide\module\widgets\Markdown;
 
 $this->title = t('action', 'UPDATE');
 
@@ -27,7 +27,7 @@ $this->title = t('action', 'UPDATE');
 	</div>
 
 	<div class="col-lg-12">
-		<?= ViewHelper::markdownToHtml($model->content) ?>
+		<?= Markdown::widget(['content' => $model->content]) ?>
 	</div>
 </div>
 
