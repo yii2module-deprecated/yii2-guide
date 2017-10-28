@@ -29,8 +29,7 @@ class ArticleController extends Controller {
 		try {
 			if($id) {
 				$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
-				$this->module->navigation->chapter($entity->chapter->parent);
-				$this->module->navigation->article($entity);
+				$this->module->navigation->articleAndChapter($entity);
 			}
 			return $this->render('view', compact('entity'));
 		} catch(NotFoundHttpException $e) {
@@ -41,8 +40,7 @@ class ArticleController extends Controller {
 
 	public function actionCode($id) {
 		$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
-		$this->module->navigation->chapter($entity->chapter->parent);
-		$this->module->navigation->article($entity);
+		$this->module->navigation->articleAndChapter($entity);
 		$this->module->navigation->articleCode($entity);
 		return $this->render('code', compact('entity'));
 	}
@@ -73,7 +71,6 @@ class ArticleController extends Controller {
 				}
 			}
 		} else {
-			/** @var ArticleEntity $entity */
 			try {
 				$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
 			} catch(NotFoundHttpException $e) {
@@ -82,10 +79,8 @@ class ArticleController extends Controller {
 			$model->setAttributes($entity->toArray(), false);
 		}
 		if($id) {
-			if(is_object($entity->chapter)) {
-				$this->module->navigation->chapter($entity->chapter->parent);
-			}
-			$this->module->navigation->article($entity);
+			/** @var ArticleEntity $entity */
+			$this->module->navigation->articleAndChapter($entity);
 			$this->module->navigation->articleUpdate($entity);
 		}
 		return $this->render('update', ['model' => $model]);

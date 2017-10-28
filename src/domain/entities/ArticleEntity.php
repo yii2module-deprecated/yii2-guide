@@ -2,6 +2,7 @@
 
 namespace yii2module\guide\domain\entities;
 
+use Yii;
 use yii\helpers\Inflector;
 use yii2lab\domain\BaseEntity;
 use yii2module\guide\domain\helpers\ArticleHelper;
@@ -30,6 +31,10 @@ class ArticleEntity extends BaseEntity {
 				'type' => ProjectEntity::className(),
 			],
 		];
+	}
+
+	public function getIsMain() {
+		return $this->id == Yii::$app->guide->repositories->article->main;
 	}
 
 	public function getTitle() {

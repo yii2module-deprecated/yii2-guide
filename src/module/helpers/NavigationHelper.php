@@ -28,6 +28,16 @@ class NavigationHelper {
 		Yii::$app->navigation->breadcrumbs->create($project->title, $url);
 	}
 
+	public function articleAndChapter($id) {
+		$entity = $this->getEntity($id, 'article');
+		if(!$entity->is_main) {
+			if(is_object($entity->chapter)) {
+				$this->chapter($entity->chapter->parent);
+			}
+			$this->article($entity);
+		}
+	}
+
 	public function article($id) {
 		$article =$this->getEntity($id, 'article');
 		$url = self::genUrl(self::URL_ARTICLE_VIEW, ['id' => $article->id]);
