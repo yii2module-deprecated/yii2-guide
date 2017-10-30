@@ -7,8 +7,7 @@ use yii\web\Controller;
 
 class ChapterController extends Controller {
 
-	public function actionView($project_id, $id = null) {
-		$this->module->navigation->project($project_id);
+	public function actionView($id = null) {
 		$entity = Yii::$app->guide->chapter->oneByIdWithArticles($id);
 		if($id) {
 			$this->module->navigation->chapter($entity);
