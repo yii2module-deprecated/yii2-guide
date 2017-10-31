@@ -16,7 +16,7 @@ class LinkFilter extends Object {
 	}
 
 	private function replaceInternalLink($html) {
-		$pattern = '~<a href="([^.]+).md">([^<]+)?</a>~';
+		$pattern = '~<a href="(.+).md">([^<]+)?</a>~';
 		$callback = function ($matches) {
 			$url = NavigationHelper::genUrl(NavigationHelper::URL_ARTICLE_VIEW);
 			$url['id'] = $matches[1];
