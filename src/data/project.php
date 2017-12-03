@@ -24,6 +24,11 @@ return [
 		'dir' => 'vendor/yii2lab/yii2-domain/guide/ru',
 		'readonly' => false,
 	],
+	[
+		'id' => 'markdown',
+		'dir' => 'vendor/yii2module/yii2-guide/guide/markdown/ru',
+		'readonly' => false,
+	],
 	
 	// --- yii2lab --- //
 	
