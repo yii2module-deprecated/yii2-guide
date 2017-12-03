@@ -14,7 +14,6 @@
 * [Документирование](code-doc.md)
 * [Code Review](code-review.md)
 * [To Do](code-todo.md)
-* [Миграции БД](code-migration.md)
 
 ## Сторонние библиотеки
 
