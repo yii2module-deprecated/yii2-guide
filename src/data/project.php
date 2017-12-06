@@ -103,11 +103,6 @@ return [
 		'dir' => 'vendor/yii2module/yii2-offline',
 		'readonly' => false,
 	],
-	[
-		'id' => 'yii2module.rbac',
-		'dir' => 'vendor/yii2module/yii2-rbac',
-		'readonly' => false,
-	],
 	
 	// --- thrid party --- //
 
