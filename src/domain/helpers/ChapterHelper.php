@@ -36,7 +36,7 @@ class ChapterHelper {
 	}
 	
 	private static function normalizeEntity($data) {
-		$data['title'] = $data['headline'];
+		$data['title'] = !empty($data['headline']) ? $data['headline'] : '{{title}}';
 		$data['id'] = !empty($data['file']) ? $data['file'] : hash('crc32b', $data['title']);
 		$data['id'] = str_replace('.md', '', $data['id']);
 		if(!empty($data['content'])) {
