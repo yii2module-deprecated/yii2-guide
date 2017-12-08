@@ -72,6 +72,11 @@ return [
 		'dir' => 'vendor/yii2lab/yii2-rbac/guide/ru',
 		'readonly' => false,
 	],
+	[
+		'id' => 'yii2lab.test',
+		'dir' => 'vendor/yii2lab/yii2-test/guide/ru',
+		'readonly' => false,
+	],
 	
 	// --- yii2woop --- //
 	
