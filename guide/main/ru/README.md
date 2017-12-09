@@ -1,13 +1,6 @@
 Общее руководство
 =============================
 
-## Шаблон проекта
-
-* [Введение](template-intro.md)
-* [Установка](template-install.md)
-* [Особенности шаблона](template-feature.md)
-* [Концепции разработки](template-development.md)
-
 ## Код
 
 * [Стиль кода](code-style.md)

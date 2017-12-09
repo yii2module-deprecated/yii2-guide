@@ -10,6 +10,11 @@ return [
 		'readonly' => false,
 	],
 	[
+		'id' => 'base.template',
+		'dir' => 'vendor/yii2module/yii2-guide/guide/template/ru',
+		'readonly' => false,
+	],
+	[
 		'id' => 'base.common',
 		'dir' => 'vendor/yii2module/yii2-guide/guide/main/ru',
 		'readonly' => false,
