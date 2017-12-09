@@ -10,8 +10,9 @@ use yii2module\guide\module\helpers\NavigationHelper;
 class LinkFilter extends Object {
 
 	public function run($html) {
-		$html = $this->replaceInternalLink($html);
 		$html = $this->replaceExternalLink($html);
+		$html = $this->replaceInternalLink($html);
+		
 		return $html;
 	}
 
