@@ -6,7 +6,7 @@ return [
 	
 	[
 		'id' => 'base.application',
-		'dir' => 'common/docs',
+		'dir' => 'common/guide/ru',
 		'readonly' => false,
 	],
 	[
@@ -17,6 +17,11 @@ return [
 	[
 		'id' => 'base.common',
 		'dir' => 'vendor/yii2module/yii2-guide/guide/main/ru',
+		'readonly' => false,
+	],
+	[
+		'id' => 'base.team',
+		'dir' => 'vendor/yii2module/yii2-guide/guide/team/ru',
 		'readonly' => false,
 	],
 	[
