@@ -5,28 +5,18 @@ return [
 	// --- main --- //
 	
 	[
-		'id' => 'application',
+		'id' => 'base.application',
 		'dir' => 'common/docs',
 		'readonly' => false,
 	],
 	[
-		'id' => 'guide',
+		'id' => 'base.common',
 		'dir' => 'vendor/yii2module/yii2-guide/guide/main/ru',
 		'readonly' => false,
 	],
 	[
-		'id' => 'guide-mcconnell',
-		'dir' => 'vendor/yii2module/yii2-guide/guide/mcconnell/ru',
-		'readonly' => false,
-	],
-	[
-		'id' => 'domain',
+		'id' => 'base.domain',
 		'dir' => 'vendor/yii2lab/yii2-domain/guide/ru',
-		'readonly' => false,
-	],
-	[
-		'id' => 'markdown',
-		'dir' => 'vendor/yii2module/yii2-guide/guide/markdown/ru',
 		'readonly' => false,
 	],
 	
@@ -77,6 +67,11 @@ return [
 		'dir' => 'vendor/yii2lab/yii2-test/guide/ru',
 		'readonly' => false,
 	],
+	[
+		'id' => 'yii2lab.helpers',
+		'dir' => 'vendor/yii2lab/yii2-helpers/guide/ru',
+		'readonly' => false,
+	],
 	
 	// --- yii2woop --- //
 	
@@ -106,6 +101,24 @@ return [
 	[
 		'id' => 'yii2module.offline',
 		'dir' => 'vendor/yii2module/yii2-offline',
+		'readonly' => false,
+	],
+	[
+		'id' => 'yii2module.vendor',
+		'dir' => 'vendor/yii2module/yii2-vendor/guide/ru',
+		'readonly' => false,
+	],
+	
+	// --- misc --- //
+	
+	[
+		'id' => 'misc.guide-mcconnell',
+		'dir' => 'vendor/yii2module/yii2-guide/guide/mcconnell/ru',
+		'readonly' => false,
+	],
+	[
+		'id' => 'misc.markdown',
+		'dir' => 'vendor/yii2module/yii2-guide/guide/markdown/ru',
 		'readonly' => false,
 	],
 	
