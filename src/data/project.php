@@ -131,6 +131,10 @@ return [
 		'dir' => 'vendor/yii2module/yii2-guide/guide/markdown/ru',
 		'readonly' => false,
 	],
+	[
+		'id' => 'misc.yii2',
+		'dir' => 'vendor/yii2module/yii2-guide/guide/yii2/src/docs/guide-ru',
+	],
 	
 	// --- thrid party --- //
 
