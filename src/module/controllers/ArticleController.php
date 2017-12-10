@@ -2,6 +2,7 @@
 
 namespace yii2module\guide\module\controllers;
 
+use common\enums\rbac\PermissionEnum;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -16,7 +17,7 @@ class ArticleController extends Controller {
 
 	public function behaviors() {
 		return [
-			'access' => Config::genAccess('guide.modify', ['update', 'delete']),
+			'access' => Config::genAccess(PermissionEnum::GUIDE_MODIFY, ['update', 'delete']),
 		];
 	}
 
