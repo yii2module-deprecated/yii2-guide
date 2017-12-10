@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 use yii2mod\markdown\MarkdownEditor;
 use yii2module\guide\module\widgets\Markdown;
 
-$this->title = t('action', 'UPDATE');
+$this->title = t('action', 'update');
 
 ?>
 
@@ -41,8 +41,8 @@ $this->title = t('action', 'UPDATE');
 		]); ?>
         
         <div class="form-group">
-			<?= Html::submitButton(t('action', 'SAVE'), ['class' => 'btn btn-primary']) ?>
-			<?= Html::submitButton(t('action', 'PREVIEW'), ['name'=> 'isPreview', 'value'=> '1', 'class' => 'btn btn-default']) ?>
+			<?= Html::submitButton(t('action', 'save'), ['class' => 'btn btn-primary']) ?>
+			<?= Html::submitButton(t('action', 'preview'), ['name'=> 'isPreview', 'value'=> '1', 'class' => 'btn btn-default']) ?>
 		</div>
 
 		<?php ActiveForm::end(); ?>

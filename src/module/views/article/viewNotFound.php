@@ -12,7 +12,7 @@ Yii::$app->notify->flash->send(['guide/article', 'not_found'], Alert::TYPE_DANGE
 $buttonVisibleClass = !Yii::$app->user->can('guide.modify') ? 'hidden' : '';
 ?>
 
-<?= Html::a(t('action', 'CREATE'), $url, [
+<?= Html::a(t('action', 'create'), $url, [
 		'class' => 'btn btn-primary ' . $buttonVisibleClass,
 	]) ?>
 <br/>
