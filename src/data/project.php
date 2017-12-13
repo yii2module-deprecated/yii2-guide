@@ -24,62 +24,107 @@ return [
 		'dir' => 'vendor/yii2module/yii2-guide/guide/team/ru',
 		'readonly' => false,
 	],
-	[
-		'id' => 'base.domain',
-		'dir' => 'vendor/yii2lab/yii2-domain/guide/ru',
-		'readonly' => false,
-	],
 	
 	// --- yii2lab --- //
-	
+
+    [
+        'id' => 'yii2lab.app',
+        'dir' => 'vendor/yii2lab/yii2-app/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.console',
+        'dir' => 'vendor/yii2lab/yii2-console/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.core',
+        'dir' => 'vendor/yii2lab/yii2-core/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.db',
+        'dir' => 'vendor/yii2lab/yii2-db/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.domain',
+        'dir' => 'vendor/yii2lab/yii2-domain/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.geo',
+        'dir' => 'vendor/yii2lab/yii2-geo/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.helpers',
+        'dir' => 'vendor/yii2lab/yii2-helpers/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.init',
+        'dir' => 'vendor/yii2lab/yii2-init/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.migration',
+        'dir' => 'vendor/yii2lab/yii2-migration/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.misc',
+        'dir' => 'vendor/yii2lab/yii2-misc/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.navigation',
+        'dir' => 'vendor/yii2lab/yii2-navigation/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.notify',
+        'dir' => 'vendor/yii2lab/yii2-notify/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.qr',
+        'dir' => 'vendor/yii2lab/yii2-qr/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.rbac',
+        'dir' => 'vendor/yii2lab/yii2-rbac/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.rest',
+        'dir' => 'vendor/yii2lab/yii2-rest/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.store',
+        'dir' => 'vendor/yii2lab/yii2-store/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.test',
+        'dir' => 'vendor/yii2lab/yii2-test/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.ubuntu-font',
+        'dir' => 'vendor/yii2lab/yii2-ubuntu-font/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2lab.validator',
+        'dir' => 'vendor/yii2lab/yii2-validator/guide/ru',
+        'readonly' => false,
+    ],
 	[
 		'id' => 'yii2lab.widgets',
 		'dir' => 'vendor/yii2lab/yii2-widgets/guide/ru',
-		'readonly' => false,
-	],
-	[
-		'id' => 'yii2lab.app',
-		'dir' => 'vendor/yii2lab/yii2-app/guide/ru',
-		'readonly' => false,
-	],
-	[
-		'id' => 'yii2lab.migration',
-		'dir' => 'vendor/yii2lab/yii2-migration/guide/ru',
-		'readonly' => false,
-	],
-	[
-		'id' => 'yii2lab.console',
-		'dir' => 'vendor/yii2lab/yii2-console/guide/ru',
-		'readonly' => false,
-	],
-	[
-		'id' => 'yii2lab.init',
-		'dir' => 'vendor/yii2lab/yii2-init/guide/ru',
-		'readonly' => false,
-	],
-	[
-		'id' => 'yii2lab.navigation',
-		'dir' => 'vendor/yii2lab/yii2-navigation/guide/ru',
-		'readonly' => false,
-	],
-	[
-		'id' => 'yii2lab.notify',
-		'dir' => 'vendor/yii2lab/yii2-notify/guide/ru',
-		'readonly' => false,
-	],
-	[
-		'id' => 'yii2lab.rbac',
-		'dir' => 'vendor/yii2lab/yii2-rbac/guide/ru',
-		'readonly' => false,
-	],
-	[
-		'id' => 'yii2lab.test',
-		'dir' => 'vendor/yii2lab/yii2-test/guide/ru',
-		'readonly' => false,
-	],
-	[
-		'id' => 'yii2lab.helpers',
-		'dir' => 'vendor/yii2lab/yii2-helpers/guide/ru',
 		'readonly' => false,
 	],
 	
@@ -90,29 +135,69 @@ return [
 		'dir' => 'vendor/yii2woop/yii2-account/guide/ru',
 		'readonly' => false,
 	],
-	
+    [
+        'id' => 'yii2woop.common',
+        'dir' => 'vendor/yii2woop/yii2-common/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2woop.service',
+        'dir' => 'vendor/yii2woop/yii2-service/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2woop.tps-generated',
+        'dir' => 'vendor/yii2woop/yii2-tps-generated/guide/ru',
+        'readonly' => false,
+    ],
+
 	// --- yii2module --- //
-	
+
+    [
+        'id' => 'yii2module.article',
+        'dir' => 'vendor/yii2module/yii2-article/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2module.cleaner',
+        'dir' => 'vendor/yii2module/yii2-cleaner/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2module.environments',
+        'dir' => 'vendor/yii2module/yii2-environments/guide/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2module.error',
+        'dir' => 'vendor/yii2module/yii2-error/guide/ru',
+        'readonly' => false,
+    ],
 	[
 		'id' => 'yii2module.fixture',
-		'dir' => 'vendor/yii2module/yii2-fixture',
+		'dir' => 'vendor/yii2module/yii2-fixture/guide/ru',
 		'readonly' => false,
 	],
-	[
-		'id' => 'yii2module.cleaner',
-		'dir' => 'vendor/yii2module/yii2-cleaner',
-		'readonly' => false,
-	],
-	[
-		'id' => 'yii2module.environments',
-		'dir' => 'vendor/yii2module/yii2-environments',
-		'readonly' => false,
-	],
+    [
+        'id' => 'yii2module.guide',
+        'dir' => 'vendor/yii2module/yii2-guide/guide/self/ru',
+        'readonly' => false,
+    ],
+    [
+        'id' => 'yii2module.lang',
+        'dir' => 'vendor/yii2module/yii2-lang/guide/ru',
+        'readonly' => false,
+    ],
 	[
 		'id' => 'yii2module.offline',
-		'dir' => 'vendor/yii2module/yii2-offline',
+		'dir' => 'vendor/yii2module/yii2-offline/guide/ru',
 		'readonly' => false,
 	],
+    [
+        'id' => 'yii2module.rest-client',
+        'dir' => 'vendor/yii2module/yii2-rest-client/guide/ru',
+        'readonly' => false,
+    ],
 	[
 		'id' => 'yii2module.vendor',
 		'dir' => 'vendor/yii2module/yii2-vendor/guide/ru',
