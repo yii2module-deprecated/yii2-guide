@@ -1,3 +1,6 @@
+[![Latest Stable Version](https://poser.pugx.org/yii2module/yii2-guide/v/stable.png)](https://packagist.org/packages/yii2module/yii2-guide)
+[![Total Downloads](https://poser.pugx.org/yii2module/yii2-guide/downloads.png)](https://packagist.org/packages/yii2module/yii2-guide)
+
 ## Описание
 
 модуль руководства
