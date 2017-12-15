@@ -3,49 +3,25 @@
 namespace yii2module\guide\domain\entities;
 
 use Yii;
-use yii\web\NotFoundHttpException;
 use yii2lab\domain\BaseEntity;
-use yii2module\guide\domain\helpers\ArticleHelper;
 
 class ProjectEntity extends BaseEntity {
 
 	const DEFAULT_GROUP = 'main';
 
 	protected $id;
+	protected $owner;
+	protected $name;
 	protected $title;
 	protected $dir;
 	protected $main = 'README';
 	protected $readonly = true;
 	protected $group;
 
-	public function getId() {
-		if(!empty($this->id)) {
-			return $this->id;
-		}
-		return hash('crc32b', $this->dir);
-	}
-
 	public function getTitle() {
 		if(!empty($this->title)) {
 			return $this->title;
 		}
-		try {
-			$article = Yii::$app->guide->article->oneMainByDir($this->dir);
-			return ArticleHelper::extractTileFromMarkdown($article->content);
-		} catch(NotFoundHttpException $e) {
-			return BL . BL . BL . Yii::t('yii', '(not set)') . BL . BL . BL;
-		}
+		return BL . BL . BL . Yii::t('yii', '(not set)') . BL . BL . BL;
 	}
-
-	public function getGroup() {
-		if(!empty($this->group)) {
-			return $this->group;
-		}
-		$idParts = explode('.', $this->id);
-		if(count($idParts) > 1) {
-			return $idParts[0];
-		}
-		return self::DEFAULT_GROUP;
-	}
-
 }
