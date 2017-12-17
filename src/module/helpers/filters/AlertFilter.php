@@ -15,7 +15,8 @@ class AlertFilter extends Object {
 	private function replace($html) {
 		$pattern = '~<blockquote>\s*<p>\s*(\w+?)\:~';
 		$html = preg_replace_callback($pattern, function($matches) {
-			return '<blockquote class="'.strtolower($matches[1]).'"><p><b>'.$matches[1].'</b>:';
+			
+			return '<blockquote class="'.strtolower($matches[1]).'"><p><b>'.Yii::t('guide/blocktypes', strtolower($matches[1])).'</b>:';
 		}, $html);
 		return $html;
 	}
