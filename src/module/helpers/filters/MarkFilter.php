@@ -23,8 +23,7 @@ class MarkFilter extends BaseObject {
 			$pageName = str_replace('\\', '-', $className);
 			$pageName = strtolower($pageName);
 			$link = 'http://www.yiiframework.com/doc-2.0/'.$pageName.'.html'/* . (!empty($method) ? '#' . $method . '-detail' : '')*/;
-			$linkHtml = '<a class="label label-primary" href="'.$link.'" target="_blank">'.$className . (!empty($method) ? '::' . $method : '') .'</a>';
-			$labelHtml = '<span>'.$linkHtml.'</span>';
+			$labelHtml = '<a class="text-danger broken-link" href="'.$link.'" target="_blank">'.$className . (!empty($method) ? '::' . $method : '') .'</a>';
 			return $labelHtml;
 		}, $html);
 		return $html;
