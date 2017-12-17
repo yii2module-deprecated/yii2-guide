@@ -118,6 +118,10 @@ return [
 	    'owner' => 'yii2woop',
 	    'name' => 'common',
     ],
+	[
+	    'owner' => 'yii2woop',
+	    'name' => 'profile',
+    ],
     [
 	    'owner' => 'yii2woop',
 	    'name' => 'service',
