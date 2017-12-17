@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2module\guide\module\helpers\filters;
+namespace yii2module\guide\widgets\filters;
 
 use Yii;
 use yii\base\Object;
-use yii2module\guide\module\helpers\HighlightHelper;
+use yii2module\guide\widgets\helpers\HighlightHelper;
 
 class CodeFilter extends Object {
 

@@ -2,8 +2,6 @@
 
 namespace yii2module\guide\module\helpers;
 
-use Yii;
-
 class ViewHelper {
 
 	public static function collectionToMap($collection) {

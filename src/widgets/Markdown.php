@@ -4,18 +4,18 @@ namespace yii2module\guide\widgets;
 
 use yii\apidoc\templates\bootstrap\assets\AssetBundle;
 use yii\base\Widget;
-use yii2module\guide\module\helpers\FilterHelper;
-use yii2module\guide\module\helpers\MarkdownHelper;
+use yii2module\guide\widgets\helpers\FilterHelper;
+use yii2module\guide\widgets\helpers\MarkdownHelper;
 
 class Markdown extends Widget {
 
 	public $content;
 	public $filters = [
-		'yii2module\guide\module\helpers\filters\AlertFilter',
-		'yii2module\guide\module\helpers\filters\CodeFilter',
-		'yii2module\guide\module\helpers\filters\ImgFilter',
-		'yii2module\guide\module\helpers\filters\LinkFilter',
-		'yii2module\guide\module\helpers\filters\MarkFilter',
+		'yii2module\guide\widgets\filters\AlertFilter',
+		'yii2module\guide\widgets\filters\CodeFilter',
+		'yii2module\guide\widgets\filters\ImgFilter',
+		'yii2module\guide\widgets\filters\LinkFilter',
+		'yii2module\guide\widgets\filters\MarkFilter',
 	];
 
 	public function init() {

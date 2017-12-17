@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\guide\module\helpers\filters;
+namespace yii2module\guide\widgets\filters;
 
 use yii\base\BaseObject;
 use yii\web\ErrorHandler;

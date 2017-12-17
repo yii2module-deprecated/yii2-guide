@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\guide\module\helpers;
+namespace yii2module\guide\widgets\helpers;
 
 use Highlight\Highlighter;
 
