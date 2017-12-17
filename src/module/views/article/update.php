@@ -8,7 +8,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii2mod\markdown\MarkdownEditor;
-use yii2module\guide\widgets\Markdown;
+use yii2module\markdown\widgets\Markdown;
 
 $this->title = t('action', 'update');
 

@@ -4,7 +4,7 @@
 
 use yii2lab\helpers\yii\Html;
 use yii2module\guide\module\helpers\NavigationHelper;
-use yii2module\guide\widgets\Markdown;
+use yii2module\markdown\widgets\Markdown;
 
 $this->title = $entity->title;
 ?>
