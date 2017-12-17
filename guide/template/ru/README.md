@@ -11,6 +11,7 @@
 ## Конфигурации
 
 * [Особенности](config-feature.md)
+* [Меню](config-menu.md)
 * [Структура](config-map.md)
 * [Env](config-env.md)
 * [Modules](config-modules.md)
