@@ -3,6 +3,7 @@
 namespace yii2module\guide\module\helpers\filters;
 
 use yii\base\BaseObject;
+use yii\web\ErrorHandler;
 
 class MarkFilter extends BaseObject {
 
@@ -14,17 +15,10 @@ class MarkFilter extends BaseObject {
 	private function replace($html) {
 		$pattern = '~\[\[(.+?)\]\]~';
 		$html = preg_replace_callback($pattern, function($matches) {
-			$className = $matches[1];
-			$arr = explode('::', $className);
-			if(count($arr) == 2) {
-				$className = $arr[0];
-				$method = $arr[1];
-			}
-			$pageName = str_replace('\\', '-', $className);
-			$pageName = strtolower($pageName);
-			$link = 'http://www.yiiframework.com/doc-2.0/'.$pageName.'.html'/* . (!empty($method) ? '#' . $method . '-detail' : '')*/;
-			$labelHtml = '<a class="text-danger broken-link" href="'.$link.'" target="_blank">'.$className . (!empty($method) ? '::' . $method : '') .'</a>';
-			return $labelHtml;
+			$arr2 = explode('|', $matches[1]);
+			$className = $arr2[0];
+			$handler = new ErrorHandler();
+			return $handler->addTypeLinks($className);
 		}, $html);
 		return $html;
 	}

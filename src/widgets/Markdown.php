@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\guide\module\widgets;
+namespace yii2module\guide\widgets;
 
 use yii\apidoc\templates\bootstrap\assets\AssetBundle;
 use yii\base\Widget;
