@@ -1,17 +1,21 @@
 Установка
 ==============
 
-Настроить path для:
- 
- * php
- * composer
- * codecept
+## Проект
 
-Создать проект
+Создать проект из шаблона
 
 ```
 composer create-project --prefer-dist yii2lab/yii2-app-advanced .
 ```
+
+Или клонировать уже существующий
+
+```
+git clone ...
+```
+
+## Composer
 
 Установить ``oauth-token`` от ``Github``
 
@@ -36,6 +40,8 @@ composer install
 ```
 composer install --no-dev
 ```
+
+## Настройка окружения
 
 Создать БД:
 
@@ -69,3 +75,4 @@ php yii fixtures
 * API - api/web
 * админка - backend/web
 * сайт - frontend/web
+

@@ -16,4 +16,3 @@
 * [Modules](config-modules.md)
 * [Services](config-services.md)
 * [Params](config-params.md)
-* [Основная панель](config-navbar.md)
