@@ -8,6 +8,7 @@ use yii2lab\domain\BaseEntity;
 use yii2lab\domain\data\Query;
 use yii2lab\domain\repositories\BaseRepository;
 use yii2lab\helpers\yii\FileHelper;
+use yii2module\guide\domain\entities\ArticleEntity;
 
 class ArticleRepository extends BaseRepository {
 
@@ -62,7 +63,13 @@ class ArticleRepository extends BaseRepository {
 	}
 
 	public function oneByIdWithChapter($id) {
-		$entity = $this->oneById($id);
+		try {
+			/** @var ArticleEntity $entity */
+			$entity = $this->oneById($id);
+		} catch(NotFoundHttpException $e) {
+			$entity = Yii::$app->guide->factory->entity->create('article');
+			$entity->id = $id;
+		}
 		try {
 			$entity->chapter = $this->domain->repositories->chapter->oneByArticleId($id);
 		} catch(NotFoundHttpException $e) {}
