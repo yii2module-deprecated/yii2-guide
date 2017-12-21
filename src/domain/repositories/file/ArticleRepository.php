@@ -52,7 +52,7 @@ class ArticleRepository extends BaseRepository implements ReadInterface, ModifyI
 	public function oneById($id, Query $query = null) {
 		/** @var Query $query */
 		$content = FileHelper::load(Yii::getAlias("@{$this->project->dir}/{$id}.md"));
-		//$query = $this->forgeQuery($query);
+		//$query = Query::forge($query);
 		if(empty($content)) {
 			throw new NotFoundHttpException();
 		}

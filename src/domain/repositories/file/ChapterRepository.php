@@ -2,6 +2,7 @@
 
 namespace yii2module\guide\domain\repositories\file;
 
+use yii2lab\domain\data\Query;
 use yii2lab\domain\interfaces\repositories\ReadInterface;
 use yii2lab\domain\repositories\BaseRepository;
 use yii2lab\domain\traits\ArrayReadTrait;
@@ -26,7 +27,7 @@ class ChapterRepository extends BaseRepository implements ReadInterface {
 	}
 
 	protected function allByParentId($id) {
-		$query = $this->forgeQuery(null);
+		$query = Query::forge();
 		$query->where('parent_id', $id);
 		$collection = $this->all($query);
 		return $collection;
