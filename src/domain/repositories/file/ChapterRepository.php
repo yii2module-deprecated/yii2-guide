@@ -2,13 +2,12 @@
 
 namespace yii2module\guide\domain\repositories\file;
 
-use Yii;
-use yii2lab\domain\data\Query;
+use yii2lab\domain\interfaces\repositories\ReadInterface;
 use yii2lab\domain\repositories\BaseRepository;
 use yii2lab\domain\traits\ArrayReadTrait;
 use yii2module\guide\domain\helpers\ChapterHelper;
 
-class ChapterRepository extends BaseRepository {
+class ChapterRepository extends BaseRepository implements ReadInterface {
 
 	use ArrayReadTrait;
 
