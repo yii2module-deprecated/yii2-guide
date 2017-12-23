@@ -45,7 +45,7 @@ return [
 return [
 	'rightMenu' => [
 		[
-			'label' => t('notify/main', 'title'),
+			'label' => ['notify/main', 'title'],
 			'icon' => 'bell',
 			'items' => [
 				[
