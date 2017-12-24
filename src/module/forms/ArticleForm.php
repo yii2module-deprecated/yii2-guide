@@ -2,6 +2,7 @@
 
 namespace yii2module\guide\module\forms;
 
+use Yii;
 use yii2lab\domain\base\Model;
 
 class ArticleForm extends Model
@@ -16,8 +17,8 @@ class ArticleForm extends Model
 	public function attributeLabels()
 	{
 		return [
-			'id' 		=> t('guide/article', 'id'),
-			'content' 		=> t('guide/article', 'content'),
+			'id' 		=> Yii::t('guide/article', 'id'),
+			'content' 		=> Yii::t('guide/article', 'content'),
 		];
 	}
 	

@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = t('action', 'code');
+$this->title = Yii::t('action', 'code');
 ?>
 
 <pre><?= trim($entity->content) ?></pre>

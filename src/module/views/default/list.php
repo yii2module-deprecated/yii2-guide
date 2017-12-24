@@ -7,13 +7,13 @@ use yii\widgets\Menu;
 use yii2module\guide\module\helpers\NavigationHelper;
 use yii2module\guide\module\helpers\ViewHelper;
 
-$this->title = t('guide/main', 'title');
+$this->title = Yii::t('guide/main', 'title');
 
 $map = ViewHelper::collectionToMap($collection);
 ?>
 
 <h1>
-	<?= t('guide/project', 'title') ?>
+	<?= Yii::t('guide/project', 'title') ?>
 </h1>
 
 <?php foreach($map as $groupName => $groupCollection) { ?>

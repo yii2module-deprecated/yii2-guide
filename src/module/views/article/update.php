@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 use yii2mod\markdown\MarkdownEditor;
 use yii2module\markdown\widgets\Markdown;
 
-$this->title = t('action', 'update');
+$this->title = Yii::t('action', 'update');
 
 ?>
 
