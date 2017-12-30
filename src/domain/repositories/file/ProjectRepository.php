@@ -2,6 +2,8 @@
 
 namespace yii2module\guide\domain\repositories\file;
 
+use Yii;
+use yii\helpers\ArrayHelper;
 use yii2lab\domain\repositories\ActiveDiscRepository;
 use yii2module\guide\domain\helpers\ProjectHelper;
 
@@ -13,6 +15,8 @@ class ProjectRepository extends ActiveDiscRepository {
 
 	protected function getCollection() {
 		$array = parent::getCollection();
+		$packageArray = $this->findProjects();
+		$array = ArrayHelper::merge($array, $packageArray);
 		$newArray = [];
 		foreach($array as $item) {
 			$item = ProjectHelper::normalizeItem($item);
@@ -24,6 +28,17 @@ class ProjectRepository extends ActiveDiscRepository {
 			}
 		}
 		return $newArray;
+	}
+	
+	private function findProjects() {
+		$map = Yii::$app->vendor->info->allWithGuide();
+		$projects = ArrayHelper::getColumn($map, function ($entity) {
+			return [
+				'owner' => $entity->owner,
+				'name' => $entity->name,
+			];
+		});
+		return $projects;
 	}
 	
 }

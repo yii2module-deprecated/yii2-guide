@@ -11,7 +11,7 @@ class Domain extends \yii2lab\domain\Domain {
 		return [
 			'repositories' => [
 				'project' => [
-					'class' => 'yii2module\guide\domain\repositories\file\ProjectRepository',
+					'driver' => Driver::FILE,
 					'owners' => [
 						'yii2lab',
 						'yii2module',
