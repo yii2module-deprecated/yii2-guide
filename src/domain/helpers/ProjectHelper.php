@@ -20,7 +20,7 @@ class ProjectHelper {
 		if(!empty($item['dir'])) {
 			return $item['dir'];
 		}
-		$alias = 'vendor' . SL . $item['owner'] . SL . 'yii2-' . $item['name'] . SL . 'guide/ru';
+		$alias = 'vendor' . SL . $item['package'] . SL . 'guide/ru';
 		return $alias;
 	}
 	
@@ -28,8 +28,8 @@ class ProjectHelper {
 		if(!empty($item['id'])) {
 			return $item['id'];
 		}
-		if(!empty($item['owner']) && !empty($item['name'])) {
-			return $item['owner'] . '.' . $item['name'];
+		if(!empty($item['package'])) {
+			return str_replace(SL,DOT, $item['package']);
 		}
 		return serialize($item);
 	}

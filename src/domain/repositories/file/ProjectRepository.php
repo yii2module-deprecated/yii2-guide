@@ -36,6 +36,7 @@ class ProjectRepository extends ActiveDiscRepository {
 			return [
 				'owner' => $entity->owner,
 				'name' => $entity->name,
+				'package' => $entity->package,
 			];
 		});
 		return $projects;

@@ -10,17 +10,17 @@ return [
 		'group' => 'main',
 	],
 	[
-		'id' => 'yii2module.guide.template',
+		'id' => 'yii2module.yii2-guide.template',
 		'dir' => 'vendor/yii2module/yii2-guide/guide/template/ru',
 		'group' => 'main',
 	],
 	[
-		'id' => 'yii2module.guide.main',
+		'id' => 'yii2module.yii2-guide.main',
 		'dir' => 'vendor/yii2module/yii2-guide/guide/main/ru',
 		'group' => 'main',
 	],
 	[
-		'id' => 'yii2module.guide.team',
+		'id' => 'yii2module.yii2-guide.team',
 		'dir' => 'vendor/yii2module/yii2-guide/guide/team/ru',
 		'group' => 'main',
 	],
@@ -28,29 +28,30 @@ return [
 	// --- yii2module --- //
 	
     [
+	    'id' => 'yii2module.yii2-guide',
 	    'owner' => 'yii2module',
-	    'name' => 'guide',
+	    'name' => 'yii2-guide',
         'dir' => 'vendor/yii2module/yii2-guide/guide/self/ru',
     ],
     
 	// --- misc --- //
 	
 	[
-		'id' => 'yii2module.guide.mcconnell',
+		'id' => 'yii2module.yii2-guide.mcconnell',
 		'owner' => 'yii2module',
 		'name' => 'guide.mcconnell',
 		'dir' => 'vendor/yii2module/yii2-guide/guide/mcconnell/ru',
 		'group' => 'misc',
 	],
 	[
-		'id' => 'yii2module.guide.markdown',
+		'id' => 'yii2module.yii2-guide.markdown',
 		'owner' => 'yii2module',
 		'name' => 'guide.markdown',
 		'dir' => 'vendor/yii2module/yii2-guide/guide/markdown/ru',
 		'group' => 'misc',
 	],
 	[
-		'id' => 'yii2module.guide.yii2',
+		'id' => 'yii2module.yii2-guide.yii2',
 		'owner' => 'yii2module',
 		'name' => 'guide.yii2',
 		'dir' => 'vendor/yii2module/yii2-guide/guide/yii2/src/docs/guide-ru',
