@@ -47,13 +47,13 @@ class NavigationHelper {
 	public function articleUpdate($id) {
 		$article = $this->getEntity($id, 'article');
 		$url = self::genUrl(self::URL_ARTICLE_UPDATE, ['id' => $article->id]);
-		Yii::$app->navigation->breadcrumbs->create(['action', 'UPDATE'], $url);
+		Yii::$app->navigation->breadcrumbs->create(['action', 'update'], $url);
 	}
 
 	public function articleCode($id) {
 		$article = $this->getEntity($id, 'article');
 		$url = self::genUrl(self::URL_ARTICLE_CODE, ['id' => $article->id]);
-		Yii::$app->navigation->breadcrumbs->create(['action', 'CODE'], $url);
+		Yii::$app->navigation->breadcrumbs->create(['action', 'code'], $url);
 	}
 
 	public function chapter($id) {
