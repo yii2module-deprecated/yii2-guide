@@ -21,6 +21,7 @@ return [
 		'dir' => 'vendor/yii2module/yii2-guide/guide/yii2/src/docs/guide-ru',
 		'group' => 'misc',
 		'hide_on_null' => true,
+		'readonly' => true,
 	],
 	
 	// --- thrid party --- //
