@@ -12,13 +12,14 @@ class ArticleService extends ActiveBaseService {
 	public function search($body) {
 		$projectCollection = Yii::$app->guide->project->all();
 		$projectCollection = ArrayHelper::index($projectCollection, 'id');
-		
 		$finded = $this->getAllFiles($projectCollection);
 		$matches = $this->findText($finded, $body['text']);
 		return $matches;
 	}
 	
 	protected function findTextInContent($content, $text) {
+		$content = mb_strtolower($content);
+		$text = mb_strtolower($text);
 		$isExists = mb_strpos($content, $text) !== false;
 		return $isExists;
 	}
