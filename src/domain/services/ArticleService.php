@@ -18,10 +18,18 @@ class ArticleService extends ActiveBaseService {
 	}
 	
 	protected function findTextInContent($content, $text) {
-		$content = mb_strtolower($content);
-		$text = mb_strtolower($text);
+		$text = $this->filterForSearch($text);
+		$content = $this->filterForSearch($content);
 		$isExists = mb_strpos($content, $text) !== false;
 		return $isExists;
+	}
+	
+	private function filterForSearch($text) {
+		$text = mb_strtolower($text);
+		$text = preg_replace('/[^a-zа-яё]/iu', ' ', $text);
+		$text = preg_replace('/\s+/iu', ' ', $text);
+		$text = trim($text);
+		return $text;
 	}
 	
 	protected function findText($finded, $text) {
