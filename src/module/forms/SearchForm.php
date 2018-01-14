@@ -9,7 +9,13 @@ class SearchForm extends Model
 {
 	
 	public $text;
-
+	
+	public function rules() {
+		return array_merge(parent::rules(), [
+			[['text'], 'required'],
+		]);
+	}
+	
 	/**
 	 * @inheritdoc
 	 */
