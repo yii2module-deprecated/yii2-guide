@@ -12,7 +12,7 @@ $this->title = $entity->title;
 
 $html = Markdown::widget(['content' => $entity->content]);
 
-if(!$entity->is_main && !$entity->project->readonly) {
+if(!$entity->is_main && is_object($entity->project) && !$entity->project->readonly) {
 	$menu = ArticleMenuHelper::getMenuFromMarkdown($entity->content);
 	if(!empty($menu)) {
 		$html = ArticleMenuHelper::addIdInHeaders($html);
