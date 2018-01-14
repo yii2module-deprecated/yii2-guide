@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 
+use yii2lab\helpers\Page;
 use yii2lab\helpers\yii\Html;
 use yii2module\guide\module\helpers\NavigationHelper;
 use yii2module\markdown\widgets\helpers\ArticleMenuHelper;
@@ -43,8 +44,10 @@ if(Yii::$app->user->can('guide.modify', $entity->project)) {
 			'method' => 'post',
 		],
 	]);
-} ?>
-
+}
+?>
+<?= NBSP ?>
+<?= Page::snippet('search_button', '@yii2module/guide/module') ?>
 </div>
 
 <?= $html ?>
