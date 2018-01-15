@@ -11,12 +11,20 @@ use yii2lab\domain\interfaces\repositories\ReadInterface;
 use yii2lab\domain\repositories\BaseRepository;
 use yii2lab\helpers\yii\FileHelper;
 use yii2module\guide\domain\entities\ArticleEntity;
+use yii2module\guide\domain\helpers\ArticleSearchHelper;
 
 class ArticleRepository extends BaseRepository implements ReadInterface, ModifyInterface {
 
 	public $project;
 	public $main = 'README';
-
+	
+	public function search($body) {
+		$projectCollection = Yii::$app->guide->project->all();
+		$articleMap = ArticleSearchHelper::getArticleMap($projectCollection);
+		$collection = ArticleSearchHelper::searchTextInArticleMap($articleMap, $body['text']);
+		return $collection;
+	}
+	
 	public function update(BaseEntity $entity) {
 		$entity->validate();
 		$project = Yii::$app->guide->project->oneById($this->project->id);

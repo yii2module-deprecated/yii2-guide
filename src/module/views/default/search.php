@@ -3,11 +3,27 @@
 /* @var $this yii\web\View
  * @var $collection array */
 
+use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 $this->title = Yii::t('action', 'search');
+
+$drawLink = function ($articleEntity) {
+	//$projectUrl = Url::to(['/guide/article', 'project_id' => $articleEntity->project->id]);
+	//$links[] = Html::a($articleEntity->project->title, $projectUrl, ['target' => '_blank']);
+	$links[] = Html::tag('span', $articleEntity->project->title, ['class' => 'text-muted']);
+	if(is_object($articleEntity->chapter)) {
+		//$chapterUrl = Url::to(['/guide/chapter/view', 'project_id' => $articleEntity->project->id, 'id' => $articleEntity->chapter->parent->id]);
+		//$links[] = Html::a($articleEntity->chapter->parent->title, $chapterUrl, ['target' => '_blank']);
+		$links[] = Html::tag('span', $articleEntity->chapter->parent->title, ['class' => 'text-muted']);
+	}
+	$articleUrl = Url::to(['/guide/article/view', 'project_id' => $articleEntity->project->id, 'id' => $articleEntity->id]);
+	$links[] = Html::a($articleEntity->title, $articleUrl, ['target' => '_blank']);
+	$glue = '&nbsp; <span class="text-muted">/</span> &nbsp;';
+	return implode($glue, $links);
+};
 
 ?>
 
@@ -19,23 +35,29 @@ $this->title = Yii::t('action', 'search');
 	    <?= $form->field($model, 'text')->textInput(['maxlength' => 64]) ?>
 
         <div class="form-group">
-			<?= Html::submitButton(t('action', 'search'), ['class' => 'btn btn-primary']) ?>
+			<?= Html::submitButton(Yii::t('action', 'search'), ['class' => 'btn btn-primary']) ?>
         </div>
-		
-		<?php ActiveForm::end(); ?>
+	
+	    <?php
+	
+	    $columns = [
+		    [
+			    'format' => 'raw',
+			    'value' => $drawLink,
+		    ],
+	    ];
+	
+	    ?>
+	
+	    <?= GridView::widget([
+		    'dataProvider' => $dataProvider,
+		    'layout' => '<span class="pull-right">{summary}</span>{items}',
+		    'columns' => $columns,
+		    'tableOptions' => ['class' => ''],
+	    ]); ?>
 
-        <ul>
-            <?php foreach($collection as $projectId => $projectFiles) { ?>
-                    <?php foreach($projectFiles as $articleEntity) { ?>
-                        <li>
-                            <?= Html::a($articleEntity->project->title, Url::to(['/guide/article', 'project_id' => $projectId]), ['target' => '_blank']) ?>
-                            /
-                            <?= Html::a($articleEntity->title, Url::to(['/guide/article/view', 'id' => $articleEntity->id, 'project_id' => $projectId]), ['target' => '_blank']) ?>
-                        </li>
-                    <?php } ?>
-            <?php } ?>
-        </ul>
-        
+        <?php ActiveForm::end(); ?>
+
     </div>
 </div>
 
