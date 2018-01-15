@@ -38,26 +38,25 @@ $drawLink = function ($articleEntity) {
 			<?= Html::submitButton(Yii::t('action', 'search'), ['class' => 'btn btn-primary']) ?>
         </div>
 	
-	    <?php
-	
-	    $columns = [
-		    [
-			    'format' => 'raw',
-			    'value' => $drawLink,
-		    ],
-	    ];
-	
+	    <?php ActiveForm::end(); ?>
+
+        <?php
+        if($dataProvider) {
+	        $columns = [
+		        [
+			        'format' => 'raw',
+			        'value' => $drawLink,
+		        ],
+	        ];
+	        echo GridView::widget([
+		        'dataProvider' => $dataProvider,
+		        'layout' => '<span class="pull-right">{summary}</span>{items}',
+		        'columns' => $columns,
+		        'tableOptions' => ['class' => ''],
+	        ]);
+        }
 	    ?>
 	
-	    <?= GridView::widget([
-		    'dataProvider' => $dataProvider,
-		    'layout' => '<span class="pull-right">{summary}</span>{items}',
-		    'columns' => $columns,
-		    'tableOptions' => ['class' => ''],
-	    ]); ?>
-
-        <?php ActiveForm::end(); ?>
-
     </div>
 </div>
 
