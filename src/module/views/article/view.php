@@ -4,6 +4,7 @@
 
 use yii2lab\helpers\Page;
 use yii2lab\helpers\yii\Html;
+use yii2module\guide\domain\entities\ProjectEntity;
 use yii2module\guide\module\helpers\NavigationHelper;
 use yii2module\markdown\widgets\helpers\ArticleMenuHelper;
 use yii2module\markdown\widgets\helpers\MarkdownHelper;
@@ -28,6 +29,14 @@ if(!$entity->is_main && is_object($entity->project) && !$entity->project->readon
 <div class="pull-right">
 
 <?php
+if($entity->project instanceof ProjectEntity) {
+	$packageName = str_replace(DOT, SL, $entity->project->id);
+	echo Html::a(Html::fa('github', ['class' => 'text-primary']), "https://github.com/{$packageName}/blob/master/guide/ru/{$entity->id}.md", [
+		'title' => Yii::t('guide/article', 'view_in_github'),
+		'target' => '_blank',
+	]);
+	echo NBSP;
+}
 echo Html::a(Html::fa('code', ['class' => 'text-primary']), NavigationHelper::genUrl(NavigationHelper::URL_ARTICLE_CODE, ['id' => $entity->id]), [
 	'title' => Yii::t('action', 'code'),
 ]);
