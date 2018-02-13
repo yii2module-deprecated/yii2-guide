@@ -17,8 +17,8 @@
 	},
 	"require": {
 		"yiisoft/yii2": "*",
+		"yiisoft/yii2-apidoc": "~2.0.0",
 		"php": ">=5.3.0",
-
 		"yii2mod/yii2-markdown": "*"
 	}
 }
