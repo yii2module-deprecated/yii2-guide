@@ -2,6 +2,7 @@
 
 namespace yii2module\guide\domain\services;
 
+use common\enums\rbac\PermissionEnum;
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii2lab\domain\services\ActiveBaseService;
@@ -18,7 +19,7 @@ class ArticleService extends ActiveBaseService {
 	}
 	
 	public function update($data) {
-		Yii::$app->account->rbac->can('guide.modify', $this->repository->project);
+		Yii::$app->account->rbac->can(PermissionEnum::GUIDE_MODIFY, $this->repository->project);
 		$entity = $this->domain->factory->entity->create($this->id, $data);
 		return $this->repository->update($entity);
 	}
