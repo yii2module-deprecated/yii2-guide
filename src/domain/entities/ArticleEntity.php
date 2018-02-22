@@ -25,10 +25,10 @@ class ArticleEntity extends BaseEntity {
 	public function fieldType() {
 		return [
 			'chapter' => [
-				'type' => ChapterEntity::className(),
+				'type' => ChapterEntity::class,
 			],
 			'project' => [
-				'type' => ProjectEntity::className(),
+				'type' => ProjectEntity::class,
 			],
 		];
 	}

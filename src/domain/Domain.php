@@ -23,7 +23,7 @@ class Domain extends \yii2lab\domain\Domain {
 				'chapter' => Driver::FILE,
 			],
 			'services' => [
-				'project' => ActiveBaseService::className(),
+				'project' => ActiveBaseService::class,
 				'article',
 				'chapter',
 			],

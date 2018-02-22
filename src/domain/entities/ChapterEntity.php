@@ -15,10 +15,10 @@ class ChapterEntity extends BaseEntity {
 	public function fieldType() {
 		return [
 			'parent' => [
-				'type' => static::className(),
+				'type' => static::class,
 			],
 			'articles' => [
-				'type' => ArticleEntity::className(),
+				'type' => ArticleEntity::class,
 				'isCollection' => true,
 			],
 		];

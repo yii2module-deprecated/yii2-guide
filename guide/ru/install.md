@@ -36,7 +36,7 @@ return [
 			'path' => 'yii2module\guide\domain',
 			'repositories' => [
 				'project' => [
-					'class' => ActiveDiscRepository::className(),
+					'class' => ActiveDiscRepository::class,
 					'table' => 'project',
 					'path' => '@yii2module/guide/data',
 				],
@@ -44,7 +44,7 @@ return [
 				'chapter' => Driver::FILE,
 			],
 			'services' => [
-				'project' => ActiveBaseService::className(),
+				'project' => ActiveBaseService::class,
 				'article',
 				'chapter',
 			],
