@@ -7,7 +7,7 @@ use yii2lab\helpers\StringHelper;
 use yii2lab\helpers\yii\FileHelper;
 use yii2module\guide\domain\entities\ArticleEntity;
 use yii2module\guide\domain\entities\ProjectEntity;
-use yii2module\rest_client\helpers\ArrayHelper;
+use yii\helpers\ArrayHelper;
 
 class ArticleSearchHelper {
 	
