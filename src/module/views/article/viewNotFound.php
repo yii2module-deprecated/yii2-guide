@@ -13,7 +13,7 @@ Yii::$app->navigation->alert->create(['guide/article', 'not_found'], Alert::TYPE
 $buttonVisibleClass = !Yii::$app->user->can(PermissionEnum::GUIDE_MODIFY) ? 'hidden' : '';
 ?>
 
-<?= Html::a(t('action', 'create'), $url, [
+<?= Html::a(Yii::t('action', 'create'), $url, [
 		'class' => 'btn btn-primary ' . $buttonVisibleClass,
 	]) ?>
 <br/>

@@ -41,8 +41,8 @@ $this->title = Yii::t('action', 'update');
 		]); ?>
         
         <div class="form-group">
-			<?= Html::submitButton(t('action', 'save'), ['class' => 'btn btn-primary']) ?>
-			<?= Html::submitButton(t('action', 'preview'), ['name'=> 'isPreview', 'value'=> '1', 'class' => 'btn btn-default']) ?>
+			<?= Html::submitButton(Yii::t('action', 'save'), ['class' => 'btn btn-primary']) ?>
+			<?= Html::submitButton(Yii::t('action', 'preview'), ['name'=> 'isPreview', 'value'=> '1', 'class' => 'btn btn-default']) ?>
 		</div>
 
 		<?php ActiveForm::end(); ?>
