@@ -5,6 +5,15 @@ namespace yii2module\guide\domain;
 use yii2lab\domain\enums\Driver;
 use yii2lab\domain\services\ActiveBaseService;
 
+/**
+ * Class Domain
+ *
+ * @package yii2module\guide\domain
+ *
+ * @property \yii2module\guide\domain\repositories\file\ProjectRepository $project
+ * @property \yii2module\guide\domain\repositories\file\ArticleRepository $article
+ * @property \yii2module\guide\domain\repositories\file\ChapterRepository $chapter
+ */
 class Domain extends \yii2lab\domain\Domain {
 	
 	public function config() {
