@@ -4,7 +4,7 @@
 
 use common\enums\rbac\PermissionEnum;
 use yii\helpers\Html;
-use yii2lab\notify\domain\widgets\Alert;
+use yii2lab\navigation\domain\widgets\Alert;
 use yii2module\guide\module\helpers\NavigationHelper;
 
 $this->title = Yii::t('guide/article', 'title');

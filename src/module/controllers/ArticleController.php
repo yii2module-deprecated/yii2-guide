@@ -8,7 +8,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii2lab\helpers\Behavior;
-use yii2lab\notify\domain\widgets\Alert;
+use yii2lab\navigation\domain\widgets\Alert;
 use yii2module\guide\domain\entities\ArticleEntity;
 use yii2module\guide\module\forms\ArticleForm;
 use yii2module\guide\module\helpers\NavigationHelper;
