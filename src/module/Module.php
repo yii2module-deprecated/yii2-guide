@@ -20,7 +20,6 @@ class Module extends YiiModule
 	private function initNavigation() {
 		$this->navigation = Yii::createObject(NavigationHelper::class);
 		$this->navigation->root();
-		Yii::$app->navigation->breadcrumbs->removeLastUrl();
 	}
 
 	private function initProject() {
