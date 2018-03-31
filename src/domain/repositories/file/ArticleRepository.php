@@ -6,14 +6,13 @@ use Yii;
 use yii\web\NotFoundHttpException;
 use yii2lab\domain\BaseEntity;
 use yii2lab\domain\data\Query;
-use yii2lab\domain\interfaces\repositories\ModifyInterface;
-use yii2lab\domain\interfaces\repositories\ReadInterface;
+use yii2lab\domain\interfaces\repositories\CrudInterface;
 use yii2lab\domain\repositories\BaseRepository;
 use yii2lab\helpers\yii\FileHelper;
 use yii2module\guide\domain\entities\ArticleEntity;
 use yii2module\guide\domain\helpers\ArticleSearchHelper;
 
-class ArticleRepository extends BaseRepository implements ReadInterface, ModifyInterface {
+class ArticleRepository extends BaseRepository implements CrudInterface {
 
 	public $project;
 	public $main = 'README';
