@@ -7,6 +7,16 @@ use yii\helpers\Inflector;
 use yii2lab\domain\BaseEntity;
 use yii2module\guide\domain\helpers\ArticleHelper;
 
+/**
+ * Class ArticleEntity
+ *
+ * @package yii2module\guide\domain\entities
+ *
+ * @property integer $id
+ * @property string $content
+ * @property ChapterEntity|null $chapter
+ * @property ProjectEntity|null $project
+ */
 class ArticleEntity extends BaseEntity {
 	
 	protected $id;

@@ -5,8 +5,17 @@ namespace yii2module\guide\domain\services;
 use common\enums\rbac\PermissionEnum;
 use Yii;
 use yii\data\ArrayDataProvider;
+use yii2lab\domain\BaseEntity;
 use yii2lab\domain\services\ActiveBaseService;
+use yii2module\guide\domain\repositories\file\ArticleRepository;
 
+/**
+ * Class ArticleService
+ *
+ * @package yii2module\guide\domain\services
+ *
+ * @property ArticleRepository $repository
+ */
 class ArticleService extends ActiveBaseService {
 	
 	public function search($body) {
@@ -18,14 +27,13 @@ class ArticleService extends ActiveBaseService {
 		return $dataProvider;
 	}
 	
-	public function update($data) {
-		Yii::$app->account->rbac->can(PermissionEnum::GUIDE_MODIFY, $this->repository->project);
-		$entity = $this->domain->factory->entity->create($this->id, $data);
+	public function update(BaseEntity $entity) {
+		Yii::$domain->account->rbac->can(PermissionEnum::GUIDE_MODIFY, $this->repository->project);
 		return $this->repository->update($entity);
 	}
 
-	public function oneMainByDir($dir, $id = 'README') {
-		return $this->repository->oneMainByDir($dir, $id);
+	public function oneMainByDir($dir) {
+		return $this->repository->oneMainByDir($dir);
 	}
 
 	public function oneMain() {
