@@ -19,13 +19,13 @@ class NavigationHelper {
 
 	public function root() {
 		$url = [self::URL_MODULE];
-		Yii::$app->navigation->breadcrumbs->create(['guide/main', 'title'], $url);
+		Yii::$domain->navigation->breadcrumbs->create(['guide/main', 'title'], $url);
 	}
 
 	public function project($id) {
 		$project =$this->getEntity($id, 'project');
 		$url = [self::URL_ARTICLE_INDEX, 'project_id' => $project->id];
-		Yii::$app->navigation->breadcrumbs->create($project->title, $url);
+		Yii::$domain->navigation->breadcrumbs->create($project->title, $url);
 	}
 
 	public function articleAndChapter($id) {
@@ -41,25 +41,25 @@ class NavigationHelper {
 	public function article($id) {
 		$article =$this->getEntity($id, 'article');
 		$url = self::genUrl(self::URL_ARTICLE_VIEW, ['id' => $article->id]);
-		Yii::$app->navigation->breadcrumbs->create($article->title, $url);
+		Yii::$domain->navigation->breadcrumbs->create($article->title, $url);
 	}
 
 	public function articleUpdate($id) {
 		$article = $this->getEntity($id, 'article');
 		$url = self::genUrl(self::URL_ARTICLE_UPDATE, ['id' => $article->id]);
-		Yii::$app->navigation->breadcrumbs->create(['action', 'update'], $url);
+		Yii::$domain->navigation->breadcrumbs->create(['action', 'update'], $url);
 	}
 
 	public function articleCode($id) {
 		$article = $this->getEntity($id, 'article');
 		$url = self::genUrl(self::URL_ARTICLE_CODE, ['id' => $article->id]);
-		Yii::$app->navigation->breadcrumbs->create(['action', 'code'], $url);
+		Yii::$domain->navigation->breadcrumbs->create(['action', 'code'], $url);
 	}
 
 	public function chapter($id) {
 		$chapter =$this->getEntity($id, 'chapter');
 		$url = self::genUrl(self::URL_CHAPTER_VIEW, ['id' => $chapter->id]);
-		Yii::$app->navigation->breadcrumbs->create($chapter->title, $url);
+		Yii::$domain->navigation->breadcrumbs->create($chapter->title, $url);
 	}
 
 	public static function genUrl($baseUrl, $params = []) {

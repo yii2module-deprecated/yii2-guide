@@ -49,7 +49,7 @@ class ProjectHelper {
 			return $item['title'];
 		}
 		try {
-			$article = Yii::$app->guide->article->oneMainByDir($item['dir']);
+			$article = Yii::$domain->guide->article->oneMainByDir($item['dir']);
 			return ArticleHelper::extractTileFromMarkdown($article->content);
 		} catch(NotFoundHttpException $e) {
 			return null;

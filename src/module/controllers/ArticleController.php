@@ -22,25 +22,25 @@ class ArticleController extends Controller {
 	}
 
 	public function actionIndex() {
-		$entity = Yii::$app->guide->article->oneMain();
+		$entity = Yii::$domain->guide->article->oneMain();
 		return $this->render('view', compact('entity'));
 	}
 
 	public function actionView($id = null) {
 		try {
 			if($id) {
-				$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
+				$entity = Yii::$domain->guide->article->oneByIdWithChapter($id);
 				$this->module->navigation->articleAndChapter($entity);
 			}
 			return $this->render('view', compact('entity'));
 		} catch(NotFoundHttpException $e) {
-			$chapter = Yii::$app->guide->repositories->chapter->oneByArticleId($id);
+			$chapter = Yii::$domain->guide->repositories->chapter->oneByArticleId($id);
 			return $this->render('viewNotFound', compact('id'));
 		}
 	}
 
 	public function actionCode($id) {
-		$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
+		$entity = Yii::$domain->guide->article->oneByIdWithChapter($id);
 		$this->module->navigation->articleAndChapter($entity);
 		$this->module->navigation->articleCode($entity);
 		return $this->render('code', compact('entity'));
@@ -55,17 +55,17 @@ class ArticleController extends Controller {
 			if($model->validate()) {
 				if($isPreview) {
 					try {
-						$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
+						$entity = Yii::$domain->guide->article->oneByIdWithChapter($id);
 					} catch(NotFoundHttpException $e) {
-						$entity = Yii::$app->guide->factory->entity->create($this->id, ['id' => $id]);
+						$entity = Yii::$domain->guide->factory->entity->create($this->id, ['id' => $id]);
 					}
 				} else {
 					try{
 						$entity = new ArticleEntity;
 						$entity->id = $id;
 						$entity->content = $body['content'];
-						Yii::$app->guide->article->update($entity);
-						Yii::$app->navigation->alert->create(['main', 'update_success'], Alert::TYPE_SUCCESS);
+						Yii::$domain->guide->article->update($entity);
+						Yii::$domain->navigation->alert->create(['main', 'update_success'], Alert::TYPE_SUCCESS);
 						return $this->redirect(NavigationHelper::genUrl(NavigationHelper::URL_ARTICLE_VIEW, compact('project_id', 'id')));
 					} catch (UnprocessableEntityHttpException $e){
 						$model->addErrorsFromException($e);
@@ -74,9 +74,9 @@ class ArticleController extends Controller {
 			}
 		} else {
 			try {
-				$entity = Yii::$app->guide->article->oneByIdWithChapter($id);
+				$entity = Yii::$domain->guide->article->oneByIdWithChapter($id);
 			} catch(NotFoundHttpException $e) {
-				$entity = Yii::$app->guide->factory->entity->create($this->id, ['id' => $id]);
+				$entity = Yii::$domain->guide->factory->entity->create($this->id, ['id' => $id]);
 			}
 			$model->setAttributes($entity->toArray(), false);
 		}
