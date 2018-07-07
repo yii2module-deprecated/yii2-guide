@@ -28,7 +28,7 @@ class ArticleService extends ActiveBaseService {
 	}
 	
 	public function update(BaseEntity $entity) {
-		Yii::$domain->account->rbac->can(PermissionEnum::GUIDE_MODIFY, $this->repository->project);
+		Yii::$domain->rbac->manager->can(PermissionEnum::GUIDE_MODIFY, $this->repository->project);
 		return $this->repository->update($entity);
 	}
 
