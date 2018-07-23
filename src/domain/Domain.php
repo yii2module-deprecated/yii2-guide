@@ -24,7 +24,7 @@ class Domain extends \yii2lab\domain\Domain {
 					'owners' => [
 						'yii2lab',
 						'yii2module',
-						'yii2woop',
+						//'yii2woop',
 						'yii2guide',
 					],
 				],
