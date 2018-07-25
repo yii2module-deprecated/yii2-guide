@@ -7,12 +7,9 @@ use yii2lab\domain\services\ActiveBaseService;
 
 /**
  * Class Domain
- *
+ * 
  * @package yii2module\guide\domain
- *
- * @property \yii2module\guide\domain\repositories\file\ProjectRepository $project
- * @property \yii2module\guide\domain\repositories\file\ArticleRepository $article
- * @property \yii2module\guide\domain\repositories\file\ChapterRepository $chapter
+ * @property-read \yii2module\guide\domain\interfaces\repositories\RepositoriesInterface $repositories
  */
 class Domain extends \yii2lab\domain\Domain {
 	
