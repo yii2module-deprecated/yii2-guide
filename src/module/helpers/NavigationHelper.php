@@ -78,7 +78,7 @@ class NavigationHelper {
 		if($id instanceof BaseEntity) {
 			$entity = $id;
 		} else {
-			$service = ArrayHelper::getValue(Yii::$app, 'guide.' . $serviceName);
+			$service = ArrayHelper::getValue(Yii::$domain, 'guide.' . $serviceName);
 			$entity = $service->oneById($id);
 		}
 		return $entity;
