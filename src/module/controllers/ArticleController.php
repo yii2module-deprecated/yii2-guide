@@ -2,7 +2,6 @@
 
 namespace yii2module\guide\module\controllers;
 
-use common\enums\rbac\PermissionEnum;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

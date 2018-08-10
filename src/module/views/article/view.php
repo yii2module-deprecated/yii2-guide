@@ -2,7 +2,6 @@
 
 /* @var $this yii\web\View */
 
-use common\enums\rbac\PermissionEnum;
 use yii2lab\helpers\Page;
 use yii2lab\helpers\yii\Html;
 use yii2module\guide\domain\entities\ProjectEntity;
@@ -10,6 +9,8 @@ use yii2module\guide\module\helpers\NavigationHelper;
 use yii2module\markdown\widgets\helpers\ArticleMenuHelper;
 use yii2module\markdown\widgets\helpers\MarkdownHelper;
 use yii2module\markdown\widgets\Markdown;
+use yii2module\guide\domain\enums\GuidePermissionEnum;
+
 
 $this->title = $entity->title;
 
@@ -42,7 +43,7 @@ echo Html::a(Html::fa('code', ['class' => 'text-primary']), NavigationHelper::ge
 	'title' => Yii::t('action', 'code'),
 ]);
 echo NBSP;
-if(Yii::$app->user->can(PermissionEnum::GUIDE_MODIFY, $entity->project)) {
+if(Yii::$app->user->can(GuidePermissionEnum::MODIFY, $entity->project)) {
 	echo Html::a(Html::fa('pencil', ['class' => 'text-primary']), NavigationHelper::genUrl(NavigationHelper::URL_ARTICLE_UPDATE, ['id' => $entity->id]), [
 		'title' => Yii::t('action', 'update'),
 	]);
