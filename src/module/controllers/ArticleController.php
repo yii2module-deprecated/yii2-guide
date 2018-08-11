@@ -9,6 +9,7 @@ use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii2lab\helpers\Behavior;
 use yii2lab\navigation\domain\widgets\Alert;
 use yii2module\guide\domain\entities\ArticleEntity;
+use yii2module\guide\domain\enums\GuidePermissionEnum;
 use yii2module\guide\module\forms\ArticleForm;
 use yii2module\guide\module\helpers\NavigationHelper;
 
@@ -16,7 +17,7 @@ class ArticleController extends Controller {
 
 	public function behaviors() {
 		return [
-			'access' => Behavior::access(PermissionEnum::GUIDE_MODIFY, ['update', 'delete']),
+			'access' => Behavior::access(GuidePermissionEnum::MODIFY, ['update', 'delete']),
 		];
 	}
 
