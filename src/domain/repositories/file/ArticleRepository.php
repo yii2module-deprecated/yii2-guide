@@ -39,7 +39,7 @@ class ArticleRepository extends BaseRepository implements CrudInterface {
 	public function oneByDir($dir, $id) {
 		$content = FileHelper::load(Yii::getAlias("@{$dir}/{$id}.md"));
 		if(empty($content)) {
-			throw new NotFoundHttpException();
+			throw new NotFoundHttpException(__METHOD__ . ': ' . __LINE__);
 		}
 		return $this->forgeEntity([
 			'id' => $id,
@@ -61,7 +61,7 @@ class ArticleRepository extends BaseRepository implements CrudInterface {
 		$content = FileHelper::load(Yii::getAlias("@{$this->project->dir}/{$id}.md"));
 		//$query = Query::forge($query);
 		if(empty($content)) {
-			throw new NotFoundHttpException();
+			throw new NotFoundHttpException(__METHOD__ . ': ' . __LINE__);
 		}
 		$entity = $this->forgeEntity([
 			'id' => $id,
