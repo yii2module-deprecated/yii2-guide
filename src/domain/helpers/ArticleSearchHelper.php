@@ -4,7 +4,7 @@ namespace yii2module\guide\domain\helpers;
 
 use Yii;
 use yii2lab\helpers\StringHelper;
-use yii2lab\helpers\yii\FileHelper;
+use yii2lab\extension\yii\helpers\FileHelper;
 use yii2module\guide\domain\entities\ArticleEntity;
 use yii2module\guide\domain\entities\ProjectEntity;
 use yii\helpers\ArrayHelper;

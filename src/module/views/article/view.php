@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii2lab\helpers\Page;
-use yii2lab\helpers\yii\Html;
+use yii2lab\extension\yii\helpers\Html;
 use yii2module\guide\domain\entities\ProjectEntity;
 use yii2module\guide\module\helpers\NavigationHelper;
 use yii2module\markdown\widgets\helpers\ArticleMenuHelper;

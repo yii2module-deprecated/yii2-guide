@@ -8,7 +8,7 @@ use yii2lab\domain\BaseEntity;
 use yii2lab\domain\data\Query;
 use yii2lab\domain\interfaces\repositories\CrudInterface;
 use yii2lab\domain\repositories\BaseRepository;
-use yii2lab\helpers\yii\FileHelper;
+use yii2lab\extension\yii\helpers\FileHelper;
 use yii2module\guide\domain\entities\ArticleEntity;
 use yii2module\guide\domain\helpers\ArticleSearchHelper;
 
