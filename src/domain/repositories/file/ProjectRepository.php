@@ -31,7 +31,7 @@ class ProjectRepository extends ActiveDiscRepository {
 	}
 	
 	private function findProjects() {
-		$map = Yii::$domain->vendor->info->allWithGuide();
+		$map = \App::$domain->vendor->info->allWithGuide();
 		$projects = ArrayHelper::getColumn($map, function ($entity) {
 			return [
 				'owner' => $entity->owner,

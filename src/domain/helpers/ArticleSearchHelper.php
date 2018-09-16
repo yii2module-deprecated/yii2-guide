@@ -45,10 +45,10 @@ class ArticleSearchHelper {
 	
 	protected static function findInProject($projectId, $articleNames, $text) {
 		$articleCollection = [];
-		$projectEntity = Yii::$domain->guide->project->oneById($projectId);
-		Yii::$domain->guide->article->setProject($projectId);
+		$projectEntity = \App::$domain->guide->project->oneById($projectId);
+		\App::$domain->guide->article->setProject($projectId);
 		foreach($articleNames as $articleId) {
-			$articleEntity = Yii::$domain->guide->article->oneByIdWithChapter($articleId);
+			$articleEntity = \App::$domain->guide->article->oneByIdWithChapter($articleId);
 			$isExists = StringHelper::search($articleEntity->content, $text);
 			$articleEntity->project = $projectEntity;
 			if($isExists) {

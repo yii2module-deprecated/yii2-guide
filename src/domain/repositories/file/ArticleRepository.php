@@ -18,7 +18,7 @@ class ArticleRepository extends BaseRepository implements CrudInterface {
 	public $main = 'README';
 	
 	public function search($body) {
-		$projectCollection = Yii::$domain->guide->project->all();
+		$projectCollection = \App::$domain->guide->project->all();
 		$articleMap = ArticleSearchHelper::getArticleMap($projectCollection);
 		$collection = ArticleSearchHelper::searchTextInArticleMap($articleMap, $body['text']);
 		return $collection;
@@ -26,7 +26,7 @@ class ArticleRepository extends BaseRepository implements CrudInterface {
 	
 	public function update(BaseEntity $entity) {
 		$entity->validate();
-		$project = Yii::$domain->guide->project->oneById($this->project->id);
+		$project = \App::$domain->guide->project->oneById($this->project->id);
 		$fileName = $project->dir . '/' . $entity->id . '.md';
 		$fileName = ROOT_DIR . '/' . $fileName;
 		FileHelper::save($fileName, $entity->content);
@@ -48,7 +48,7 @@ class ArticleRepository extends BaseRepository implements CrudInterface {
 	}
 
 	public function setProject($project_id) {
-		$project = Yii::$domain->guide->project->oneById($project_id);
+		$project = \App::$domain->guide->project->oneById($project_id);
 		$this->project = $project;
 	}
 
@@ -76,7 +76,7 @@ class ArticleRepository extends BaseRepository implements CrudInterface {
 			/** @var ArticleEntity $entity */
 			$entity = $this->oneById($id);
 		} catch(NotFoundHttpException $e) {
-			$entity = Yii::$domain->guide->factory->entity->create('article');
+			$entity = \App::$domain->guide->factory->entity->create('article');
 			$entity->id = $id;
 		}
 		try {

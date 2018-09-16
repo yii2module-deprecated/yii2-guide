@@ -44,7 +44,7 @@ class ArticleEntity extends BaseEntity {
 	}
 
 	public function getIsMain() {
-		return $this->id == Yii::$domain->guide->repositories->article->main;
+		return $this->id == \App::$domain->guide->repositories->article->main;
 	}
 
 	public function getTitle() {

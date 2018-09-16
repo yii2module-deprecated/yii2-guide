@@ -11,20 +11,20 @@ use yii2module\guide\module\forms\SearchForm;
 class DefaultController extends Controller {
 	
 	public function actionIndex() {
-		$collection = Yii::$domain->guide->project->all();
+		$collection = \App::$domain->guide->project->all();
 		return $this->render('list', compact('collection'));
 	}
 	
 	public function actionSearch() {
-		Yii::$domain->navigation->breadcrumbs->create(Yii::t('action', 'search'), Url::to(['/guide/search']));
+		\App::$domain->navigation->breadcrumbs->create(Yii::t('action', 'search'), Url::to(['/guide/search']));
 		$dataProvider = null;
 		$model = new SearchForm();
 		if(Yii::$app->request->isPost) {
 			$body = Yii::$app->request->post('SearchForm');
 			$model->setAttributes($body, false);
-			Yii::$domain->navigation->breadcrumbs->create($body['text']);
+			\App::$domain->navigation->breadcrumbs->create($body['text']);
 			/** @var DataProviderInterface $dataProvider */
-			$dataProvider = Yii::$domain->guide->article->search($body);
+			$dataProvider = \App::$domain->guide->article->search($body);
 		}
 		return $this->render('search', [
 			'model' => $model,

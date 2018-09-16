@@ -25,7 +25,7 @@ class Module extends YiiModule
 	private function initProject() {
 		$project_id = Yii::$app->request->getQueryParam('project_id');
 		if($project_id) {
-			Yii::$domain->guide->article->setProject($project_id);
+			\App::$domain->guide->article->setProject($project_id);
 			$this->navigation->project($project_id);
 		}
 	}
