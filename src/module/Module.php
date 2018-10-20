@@ -4,14 +4,19 @@ namespace yii2module\guide\module;
 
 use Yii;
 use yii\base\Module as YiiModule;
+use yii2lab\domain\helpers\DomainHelper;
 use yii2module\guide\module\helpers\NavigationHelper;
 
 class Module extends YiiModule
 {
 
 	public $navigation;
-
+	
 	public function init() {
+		DomainHelper::forgeDomains([
+			'vendor' => 'yii2module\vendor\domain\Domain',
+			'guide' => 'yii2module\guide\domain\Domain',
+		]);
 		parent::init();
 		$this->initNavigation();
 		$this->initProject();
