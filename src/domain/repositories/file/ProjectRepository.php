@@ -2,7 +2,6 @@
 
 namespace yii2module\guide\domain\repositories\file;
 
-use Yii;
 use yii\helpers\ArrayHelper;
 use yii2lab\domain\repositories\ActiveDiscRepository;
 use yii2module\guide\domain\helpers\ProjectHelper;
